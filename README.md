@@ -3,7 +3,7 @@ penguincarpool
 
 SE 3A04 Final Project. 
 
-Group Members:
+GROUP MEMBERS
 Nicolas Lelievre
 Andy Quach
 Nolan Driessen

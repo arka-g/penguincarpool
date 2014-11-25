@@ -49,7 +49,7 @@ public class LoginScreen extends Activity {
         public void onClick(View v) {}
         public void launchHomeScreen(View v) {
             new AlertDialog.Builder(this)
-                    .setTitle("F**K")
+                    .setTitle("Login Error")
                     .setMessage("You don' goofed... Please try again.")
                     .setNeutralButton("Ok", null)
                     .show();
@@ -65,6 +65,11 @@ public class LoginScreen extends Activity {
 
         if(emailField != 0 & passwordField != 0) {
             startActivity(new Intent(LoginScreen.this, HomeScreen.class));
+        }
+        else{
+            msgLoginError asdf = new msgLoginError();
+            asdf.launchHomeScreen(v);
+
         }
     }
 

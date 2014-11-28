@@ -3,6 +3,8 @@
     package="com.mcmaster.t202.penguincarpool" >
 
     <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+
 
     <application
         android:allowBackup="true"

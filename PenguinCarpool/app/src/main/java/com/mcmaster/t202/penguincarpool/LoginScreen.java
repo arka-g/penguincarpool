@@ -172,13 +172,12 @@ public class LoginScreen extends Activity implements View.OnClickListener {
         public void onClick(View v) {}
         public void launchHomeScreen(View v) {
             new AlertDialog.Builder(this)
-                    .setTitle("F**K")
+                    .setTitle("Login Error")
                     .setMessage("You don' goofed... Please try again.")
                     .setNeutralButton("Ok", null)
                     .show();
         }
     }
-
     // Launch RegisterScreen from LoginScreen
     public void launchRegisterScreen(View v){
         startActivity(new Intent(LoginScreen.this, RegisterScreen.class));

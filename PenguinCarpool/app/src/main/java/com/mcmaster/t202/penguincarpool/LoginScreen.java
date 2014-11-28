@@ -141,13 +141,12 @@ public class LoginScreen extends Activity implements View.OnClickListener {
                 JSONObject text_obj = new JSONObject(text);
                 String status = text_obj.getString("status");
 
-                //do something and transition
+                //transition to homescreen if credentials are valid
                 if (status.equals("200")) {
                     startActivity(new Intent(LoginScreen.this, HomeScreen.class));
-
                 }
                 else {
-                    //login error
+                    //login error popup?
                 }
                 return status;
 
@@ -163,7 +162,7 @@ public class LoginScreen extends Activity implements View.OnClickListener {
 
 
     }
-    // Popup to be called in case of Login Error
+    // Popup to be called in case of Login Error.
     public class msgLoginError extends Activity implements View.OnClickListener{
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -178,18 +177,6 @@ public class LoginScreen extends Activity implements View.OnClickListener {
                     .setNeutralButton("Ok", null)
                     .show();
         }
-    }
-
-
-    // Launch HomeScreen if email and password fields are nonempty (CHANGE)
-    public void launchHomeScreen(View v){
-
-//        Integer emailField = ((EditText) findViewById(R.id.loginEmail)).getText().toString().trim().length();
-//        Integer passwordField = ((EditText) findViewById(R.id.loginPassword)).getText().toString().trim().length();
-
-       // if(emailField != 0 & passwordField != 0) {
-        startActivity(new Intent(LoginScreen.this, HomeScreen.class));
-        //}
     }
 
     // Launch RegisterScreen from LoginScreen

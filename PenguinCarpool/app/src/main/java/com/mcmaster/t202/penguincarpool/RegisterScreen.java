@@ -1,7 +1,6 @@
 package com.mcmaster.t202.penguincarpool;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,22 +10,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.protocol.BasicHttpContext;
-import org.apache.http.protocol.HttpContext;
-import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,11 +46,11 @@ public class RegisterScreen extends Activity implements View.OnClickListener {
         Button b = (Button) findViewById(R.id.regSubmitInfo);
         b.setClickable(false);
         //execute get and post
-        new LongRunningGetIO().execute();
+        new RegisterIO().execute();
     }
 
 
-    private class LongRunningGetIO extends AsyncTask<Void, Void, String> {
+    private class RegisterIO extends AsyncTask<Void, Void, String> {
         @Override
 
         protected String doInBackground(Void... params) {
@@ -110,7 +103,7 @@ public class RegisterScreen extends Activity implements View.OnClickListener {
                 Log.d("IO Exception", e.toString());
                 e.printStackTrace();
             }
-            //i dont need this..
+            //this is useless
             return str1;
         }
 

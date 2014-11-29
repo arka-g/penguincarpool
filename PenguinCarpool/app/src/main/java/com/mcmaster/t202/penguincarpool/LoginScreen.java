@@ -141,7 +141,7 @@ public class LoginScreen extends Activity implements View.OnClickListener {
                 JSONObject text_obj = new JSONObject(text);
                 String status = text_obj.getString("status");
 
-                //transition to homescreen if credentials are valid
+                //transition to home screen if credentials are valid
                 if (status.equals("200")) {
                     startActivity(new Intent(LoginScreen.this, HomeScreen.class));
                 }

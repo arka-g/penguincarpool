@@ -51,19 +51,31 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.333333" vertical-offset="165" max-vertical-offset="1305">
-              <caret line="26" column="22" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="22" />
+            <state vertical-scroll-proportion="-6.111111" vertical-offset="180" max-vertical-offset="1320">
+              <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProfileScreen.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="LoginScreen.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PenguinCarpool/app/src/main/java/com/mcmaster/t202/penguincarpool/LoginScreen.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.7553191" vertical-offset="855" max-vertical-offset="2565">
+              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProfileScreen.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PenguinCarpool/app/src/main/java/com/mcmaster/t202/penguincarpool/ProfileScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.7659575" vertical-offset="645" max-vertical-offset="1845">
-              <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="385" max-vertical-offset="855">
+              <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -71,8 +83,8 @@
       <file leaf-file-name="RequestScreen.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PenguinCarpool/app/src/main/java/com/mcmaster/t202/penguincarpool/RequestScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="415" max-vertical-offset="2490">
-              <caret line="38" column="43" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="370" max-vertical-offset="2490">
+              <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -93,11 +105,11 @@
         <option value="$PROJECT_DIR$/PenguinCarpool/app/src/main/res/layout/activity_home_screen.xml" />
         <option value="$PROJECT_DIR$/PenguinCarpool/app/src/main/res/layout/activity_login_screen.xml" />
         <option value="$PROJECT_DIR$/PenguinCarpool/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/PenguinCarpool/app/src/main/java/com/mcmaster/t202/penguincarpool/LoginScreen.java" />
         <option value="$PROJECT_DIR$/PenguinCarpool/app/src/main/res/layout/activity_request_screen.xml" />
         <option value="$PROJECT_DIR$/PenguinCarpool/app/src/main/java/com/mcmaster/t202/penguincarpool/RequestScreen.java" />
-        <option value="$PROJECT_DIR$/PenguinCarpool/app/src/main/res/layout/activity_profile_screen.xml" />
         <option value="$PROJECT_DIR$/PenguinCarpool/app/src/main/java/com/mcmaster/t202/penguincarpool/ProfileScreen.java" />
+        <option value="$PROJECT_DIR$/PenguinCarpool/app/src/main/res/layout/activity_profile_screen.xml" />
+        <option value="$PROJECT_DIR$/PenguinCarpool/app/src/main/java/com/mcmaster/t202/penguincarpool/LoginScreen.java" />
       </list>
     </option>
   </component>
@@ -356,42 +368,6 @@
       </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="main">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="PenguinCarpool/app/src/main">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="main">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="PenguinCarpool/app/src/main">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="java">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="com/mcmaster/t202/penguincarpool">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
           <PATH>
             <PATH_ELEMENT USER_OBJECT="Root">
               <option name="myItemId" value="" />
@@ -693,7 +669,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -925,20 +901,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PenguinCarpool/app/src/main/java/com/mcmaster/t202/penguincarpool/LoginScreen.java">
+    <entry file="file://$PROJECT_DIR$/PenguinCarpool/app/src/main/java/com/mcmaster/t202/penguincarpool/RequestScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.60638297" vertical-offset="1260" max-vertical-offset="3015">
-          <caret line="65" column="24" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="370" max-vertical-offset="2490">
+          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PenguinCarpool/app/src/main/java/com/mcmaster/t202/penguincarpool/RequestScreen.java">
+    <entry file="file://$PROJECT_DIR$/PenguinCarpool/app/src/main/java/com/mcmaster/t202/penguincarpool/ProfileScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="415" max-vertical-offset="2490">
-          <caret line="38" column="43" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="855">
+          <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -950,16 +926,16 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.333333" vertical-offset="165" max-vertical-offset="1305">
-          <caret line="26" column="22" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="22" />
+        <state vertical-scroll-proportion="-6.111111" vertical-offset="180" max-vertical-offset="1320">
+          <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PenguinCarpool/app/src/main/java/com/mcmaster/t202/penguincarpool/ProfileScreen.java">
+    <entry file="file://$PROJECT_DIR$/PenguinCarpool/app/src/main/java/com/mcmaster/t202/penguincarpool/LoginScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.7659575" vertical-offset="645" max-vertical-offset="1845">
-          <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
+        <state vertical-scroll-proportion="-1.7553191" vertical-offset="855" max-vertical-offset="2565">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
           <folding />
         </state>
       </provider>

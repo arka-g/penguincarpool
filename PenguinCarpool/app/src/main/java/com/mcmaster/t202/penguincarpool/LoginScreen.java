@@ -46,6 +46,7 @@ public class LoginScreen extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
         findViewById(R.id.loginButton).setOnClickListener(this);
+       // findViewById(R.id.userRatingAve).setOnClickListener(this);
     }
 
 

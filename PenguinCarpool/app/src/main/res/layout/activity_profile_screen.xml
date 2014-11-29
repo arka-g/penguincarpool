@@ -9,11 +9,11 @@
     tools:context="com.mcmaster.t202.penguincarpool.ProfileScreen">
 
     <TextView
-        android:text="Frank Arka"
+        android:text="First Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:id="@+id/userName"
+        android:textSize="40dp"
+        android:id="@+id/userFirstName"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
@@ -23,19 +23,59 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/userRatingAve"
-        android:layout_below="@+id/userName"
-        android:layout_centerHorizontal="true"
         android:numStars="5"
         android:rating="3.5"
-        android:stepSize="0.5" />
+        android:stepSize="0.5"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Last Name"
+        android:textSize="40dp"
+        android:id="@+id/userLastName"
+        android:layout_below="@+id/userFirstName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Your Penguin Rating"
+        android:id="@+id/userRatingText"
+        android:layout_above="@+id/userRatingAve"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Good Penguin"
+        android:textSize="35dp"
+        android:id="@+id/penguinRating"
+        android:layout_below="@+id/userRatingAve"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="youremail@emailhost.com"
+        android:id="@+id/userEmail"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit"
-        android:id="@+id/profileEdit"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:text="Show Dialog"
+        android:id="@+id/dialogButton"
+        android:layout_below="@+id/penguinRating"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp" />
 
 </RelativeLayout>

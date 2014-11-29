@@ -36,6 +36,11 @@ import java.util.List;
 
 public class LoginScreen extends Activity implements View.OnClickListener {
 
+    public static HttpClient httpClient = new DefaultHttpClient();
+    public static String firstname;
+    public static String lastname;
+    public static String email;
+    public static int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +76,7 @@ public class LoginScreen extends Activity implements View.OnClickListener {
     }
 
 
-    private class LoginGetIO extends AsyncTask<Void, Void, String> {
+    public class LoginGetIO extends AsyncTask<Void, Void, String> {
 
         protected String getASCIIContentFromEntity(HttpEntity entity) throws IllegalStateException, IOException {
             InputStream in = entity.getContent();
@@ -97,7 +102,7 @@ public class LoginScreen extends Activity implements View.OnClickListener {
             String login_email = username_email.getText().toString();
             String login_pw = password_login.getText().toString();
 
-            HttpClient httpClient = new DefaultHttpClient();
+            //HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
             HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/login");
 
@@ -138,9 +143,14 @@ public class LoginScreen extends Activity implements View.OnClickListener {
                 HttpResponse response1 = httpClient.execute(httpGet, localContext);
                 HttpEntity entity = response1.getEntity();
                 text = getASCIIContentFromEntity(entity);
+
                 JSONObject text_obj = new JSONObject(text);
                 String status = text_obj.getString("status");
-
+                firstname = text_obj.getString("0");
+                lastname = text_obj.getString("1");
+                email = text_obj.getString("2");
+                id = text_obj.getInt("3");
+                Log.d("ID",Integer.toString(id));
                 //transition to home screen if credentials are valid
                 if (status.equals("200")) {
                     startActivity(new Intent(LoginScreen.this, HomeScreen.class));
@@ -148,7 +158,7 @@ public class LoginScreen extends Activity implements View.OnClickListener {
                 else {
                     //login error popup?
                 }
-                return status;
+                return text;
 
             } catch (Exception e) {
                 return e.getLocalizedMessage();

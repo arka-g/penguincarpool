@@ -39,22 +39,22 @@ public class LoginScreen extends Activity {
     }
 
 
-    // Popup to be called in case of Login Error
-    public class msgLoginError extends Activity implements View.OnClickListener{
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_login_screen);
-        }
-        public void onClick(View v) {}
-        public void launchHomeScreen(View v) {
-            new AlertDialog.Builder(this)
-                    .setTitle("Login Error")
-                    .setMessage("You don' goofed... Please try again.")
-                    .setNeutralButton("Ok", null)
-                    .show();
-        }
-    }
+    // Popup to be called in case of Login Error [TEST]
+    //public class msgLoginError extends Activity implements View.OnClickListener{
+    //    @Override
+    //    public void onCreate(Bundle savedInstanceState) {
+    //        super.onCreate(savedInstanceState);
+    //        setContentView(R.layout.activity_login_screen);
+    //    }
+    //    public void onClick(View v) {}
+    //    public void launchHomeScreen(View v) {
+    //        new AlertDialog.Builder(this)
+    //                .setTitle("Login Error")
+    //                .setMessage("You don' goofed... Please try again.")
+    //                .setNeutralButton("Ok", null)
+    //                .show();
+    //    }
+    //}
 
 
     // Launch HomeScreen if email and password fields are nonempty (CHANGE)
@@ -67,9 +67,26 @@ public class LoginScreen extends Activity {
             startActivity(new Intent(LoginScreen.this, HomeScreen.class));
         }
         else{
-            msgLoginError asdf = new msgLoginError();
-            asdf.launchHomeScreen(v);
 
+            // Popup to be called in case of Login Error [TEST]
+            class msgLoginError extends Activity implements View.OnClickListener{
+                @Override
+                public void onCreate(Bundle savedInstanceState) {
+                    super.onCreate(savedInstanceState);
+                    setContentView(R.layout.activity_login_screen);
+                }
+                public void onClick(View v) {}
+                public void launchHomeScreen(View v) {
+                    new AlertDialog.Builder(this)
+                            .setTitle("Login Error")
+                            .setMessage("You don' goofed... Please try again.")
+                            .setNeutralButton("Ok", null)
+                            .show();
+                }
+            }
+
+            msgLoginError showLoginErrorMsg = new msgLoginError();
+            showLoginErrorMsg.launchHomeScreen(v);
         }
     }
 

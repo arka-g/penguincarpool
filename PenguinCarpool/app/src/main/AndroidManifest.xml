@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mcmaster.t202.penguincarpool" >
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
+        <activity
+            android:name=".LoginScreen"
+            android:configChanges="keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <!-- configChanges and screenOrientation restrict application to "portrait" mode for THIS activity. Copy for all activities. -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".HomeScreen"
+            android:configChanges="keyboardHidden|screenSize"
+            android:label="@string/title_activity_home_screen"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ProfileScreen"
+            android:configChanges="keyboardHidden|screenSize"
+            android:label="@string/title_activity_view_profile"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".RegisterScreen"
+            android:configChanges="keyboardHidden|screenSize"
+            android:label="@string/title_activity_register"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ScheduleScreen"
+            android:configChanges="keyboardHidden|screenSize"
+            android:label="@string/title_activity_schedule_screen"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".RequestScreen"
+            android:configChanges="keyboardHidden|screenSize"
+            android:label="@string/title_activity_request_screen"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".IdleScreen"
+            android:label="@string/title_activity_idle_screen"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|screenSize" >
+        </activity>
+    </application>
+
+</manifest>

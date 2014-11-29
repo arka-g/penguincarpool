@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 
 
 public class HomeScreen extends Activity {
@@ -15,8 +14,6 @@ public class HomeScreen extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
-        EditText et = (EditText) findViewById(R.id.my_edit);
-        et.setText("You are logged in!");
     }
 
 

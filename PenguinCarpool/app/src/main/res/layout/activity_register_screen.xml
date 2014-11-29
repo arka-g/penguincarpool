@@ -45,6 +45,18 @@
         android:layout_alignEnd="@+id/regFirstName"
         android:hint="Last" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPostalAddress"
+        android:ems="10"
+        android:id="@+id/regHomeAddress"
+        android:hint="Home Address"
+        android:layout_below="@+id/regLastName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/regLastName"
+        android:layout_alignEnd="@+id/regLastName" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -92,7 +104,28 @@
         android:text="Submit Information"
         android:id="@+id/regSubmitInfo"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        />
+        android:layout_centerHorizontal="true" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/detourTime"
+        android:max="60"
+        android:indeterminate="false"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Maximum detour time (minutes):"
+        android:id="@+id/maxDetourTime"
+        android:layout_below="@+id/detourTime"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

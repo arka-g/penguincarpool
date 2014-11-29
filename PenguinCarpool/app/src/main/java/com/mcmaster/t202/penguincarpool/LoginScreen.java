@@ -3,44 +3,19 @@ package com.mcmaster.t202.penguincarpool;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.protocol.BasicHttpContext;
-import org.apache.http.protocol.HttpContext;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
-
-
-public class LoginScreen extends Activity implements View.OnClickListener {
+public class LoginScreen extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
-        findViewById(R.id.loginButton).setOnClickListener(this);
     }
 
 
@@ -62,30 +37,6 @@ public class LoginScreen extends Activity implements View.OnClickListener {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    public void onClick(View arg0) {
-        Button login_btn = (Button) findViewById(R.id.loginButton);
-        login_btn.setClickable(false);
-        //execute get and post
-        new LoginGetIO().execute();
-    }
-
-
-    private class LoginGetIO extends AsyncTask<Void, Void, String> {
-
-        protected String getASCIIContentFromEntity(HttpEntity entity) throws IllegalStateException, IOException {
-            InputStream in = entity.getContent();
-
-            StringBuffer out = new StringBuffer();
-            int n = 1;
-            while (n > 0) {
-                byte[] b = new byte[4096];
-                n = in.read(b);
-                if (n > 0) out.append(new String(b, 0, n));
-            }
-            return out.toString();
-        }
-
 
         @Override
 
@@ -145,39 +96,31 @@ public class LoginScreen extends Activity implements View.OnClickListener {
                 if (status.equals("200")) {
                     startActivity(new Intent(LoginScreen.this, HomeScreen.class));
                 }
-                else {
-                    //login error popup?
+                else{
                 }
-                return status;
 
-            } catch (Exception e) {
-                return e.getLocalizedMessage();
+            // Popup to be called in case of Login Error [TEST]
+            class msgLoginError extends Activity implements View.OnClickListener{
+                @Override
+                public void onCreate(Bundle savedInstanceState) {
+                    super.onCreate(savedInstanceState);
+                    setContentView(R.layout.activity_login_screen);
+                }
+                public void onClick(View v) {}
+                public void launchHomeScreen(View v) {
+                    new AlertDialog.Builder(this)
+                            .setTitle("Login Error")
+                            .setMessage("You don' goofed... Please try again.")
+                            .setNeutralButton("Ok", null)
+                            .show();
+                }
             }
-        }
 
-        protected void onPostExecute(String results) {
-            Button login_btn = (Button) findViewById(R.id.loginButton);
-            login_btn.setClickable(true);
-        }
-
-
-    }
-    // Popup to be called in case of Login Error.
-    public class msgLoginError extends Activity implements View.OnClickListener{
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_login_screen);
-        }
-        public void onClick(View v) {}
-        public void launchHomeScreen(View v) {
-            new AlertDialog.Builder(this)
-                    .setTitle("Login Error")
-                    .setMessage("You don' goofed... Please try again.")
-                    .setNeutralButton("Ok", null)
-                    .show();
+            msgLoginError showLoginErrorMsg = new msgLoginError();
+            showLoginErrorMsg.launchHomeScreen(v);
         }
     }
+
     // Launch RegisterScreen from LoginScreen
     public void launchRegisterScreen(View v){
         startActivity(new Intent(LoginScreen.this, RegisterScreen.class));

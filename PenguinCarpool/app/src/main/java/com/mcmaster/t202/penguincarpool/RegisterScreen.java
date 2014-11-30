@@ -70,8 +70,8 @@ public class RegisterScreen extends Activity implements View.OnClickListener {
 
             HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-            HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/save");
-
+           // HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/save");
+            HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/save");
             //Post Data
             List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(4);
             nameValuePair.add(new BasicNameValuePair("first_name", str1));

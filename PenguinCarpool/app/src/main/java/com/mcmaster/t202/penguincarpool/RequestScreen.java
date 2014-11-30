@@ -71,7 +71,9 @@ public class RequestScreen extends LoginScreen implements View.OnClickListener {
 
             //HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-            HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/neworder");
+          //  HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/neworder");
+//for phone:
+            HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/neworder");
 
             //Post Data
             List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(3);
@@ -127,8 +129,9 @@ public class RequestScreen extends LoginScreen implements View.OnClickListener {
 
             //HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-            HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/neworder");
-
+            //HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/neworder");
+            //for phone:
+            HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/neworder");
             //Post Data
             List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(3);
             nameValuePair.add(new BasicNameValuePair("User_Location", str_loc));

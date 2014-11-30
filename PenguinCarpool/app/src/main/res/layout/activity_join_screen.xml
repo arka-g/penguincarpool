@@ -24,14 +24,24 @@
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="fill_parent"
+    <ListView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minLines="15"
-        android:maxLines="15"
-        android:textSize="12sp"
-        android:editable="false"
-        android:id="@+id/my_edit"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true" />
+        android:id="@+id/listView"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/randBtn" />
+    <!--
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:minLines="15"
+            android:maxLines="15"
+            android:textSize="12sp"
+            android:editable="false"
+            android:id="@+id/my_edit"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            />
+            -->
+
 </RelativeLayout>

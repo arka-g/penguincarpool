@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import com.mcmaster.t202.penguincarpool.R;
 
@@ -30,6 +31,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -41,12 +43,14 @@ public class JoinScreen extends LoginScreen implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join_screen);
        findViewById(R.id.randBtn).setOnClickListener(this);
-
+//       findViewById(R.id.listView),setOnItemClickListener(this);
     }
 
     public void onClick(View arg0) {
         Button rand_btn = (Button) findViewById(R.id.randBtn);
         rand_btn.setClickable(false);
+//        ListView list = (ListView) findViewById(R.id.listView);
+//        list.setClickable(false);
         //execute get and post
         new JoinGetIO().execute();
     }
@@ -68,14 +72,14 @@ public class JoinScreen extends LoginScreen implements View.OnClickListener {
         }
 
 
-        @TargetApi(Build.VERSION_CODES.KITKAT)
+       // @TargetApi(Build.VERSION_CODES.KITKAT)
         @Override
 
         protected String doInBackground(Void... params) {
 
             HttpContext localContext = new BasicHttpContext();
             //get available taxis
-            HttpGet httpGet = new HttpGet("http://10.0.2.2/penguin-carpool/public/activeTaxi");
+            HttpGet httpGet = new HttpGet("http://10.0.2.2/penguin-carpool/public/carpool");
             String text = null;
             try {
                 HttpResponse response2 = httpClient.execute(httpGet, localContext);
@@ -84,42 +88,19 @@ public class JoinScreen extends LoginScreen implements View.OnClickListener {
 
                 JSONObject text_obj = new JSONObject(text);
                 JSONArray jsonArray = text_obj.getJSONArray("taxi");
-                for (int i = 0; i < jsonArray.length(); i++) {
+                int len = jsonArray.length();
+                String taxi_loc[] = new String[len];
+
+                for (int i = 0; i < len; i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    String taxi_loc = jsonObject.getString("taxi_location");
-                    String taxi_id = jsonObject.getString("id");
-                    Log.d("wtf", jsonObject.toString());
+                    taxi_loc[i] = jsonObject.getString("taxi_location");
+//                    String taxi_id = jsonObject.getString("id");
+                   // Log.d("taxi_id", taxi_id);
+                    //Log.d("Json Object", jsonObject.toString());
                 }
-//                String sigh = text_obj.getString("taxi");
-//                JSONArray arr = text_obj.toJSONArray();
-//
-//
-//                JSONArray taxis = new JSONArray(text_obj.get("taxi"));
-//                Log.d("Array", arr);
+//                Log.d("taxi_loc", Arrays.toString(taxi_loc));
 
 
-//                JSONArray arr = new JSONArray(text);
-//                JSONArray taxis = new JSONArray(text_obj.get("taxi"));
-//                for (int i = 0; i < taxis.length(); i++) {
-//
-//                    JSONObject jsonobject = taxis.getJSONObject(i);
-//                    Log.d("Array", jsonobject.toString());
-//                    String name=jsonobject.getString("name");
-//                    String Url=jsonobject.getString("url");
-
-//                }
-//                firstname = text_obj.getString("0");
-//                lastname = text_obj.getString("1");
-//                email = text_obj.getString("2");
-//                id = text_obj.getInt("3");
-//                Log.d("ID",Integer.toString(id));
-                //transition to home screen if credentials are valid
-//                if (status.equals("200")) {
-//                    startActivity(new Intent(LoginScreen.this, HomeScreen.class));
-//                }
-//                else {
-//                    //login error popup?
-//                }
                 return text;
 
             } catch (Exception e) {

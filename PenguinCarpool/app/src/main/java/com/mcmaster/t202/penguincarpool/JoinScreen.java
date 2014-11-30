@@ -40,37 +40,7 @@ public class JoinScreen extends LoginScreen {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join_screen);
         findViewById(R.id.rand_btn).setOnClickListener(this);
-        //populateListView();
-        //registerClickCallback();
     }
-
-//    private void populateListView() {
-//        // Create list of items
-//        String[] taxis = {"Blue", "Green", "Purple", "Red"};
-//
-//        // Build adapter
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-//                this,                       // Context for the activity
-//                R.layout.available_taxis,   // Layout to use
-//                taxis);                     // Items to display
-//
-//        // Configure listview
-//        ListView list = (ListView) findViewById(R.id.joinListView);
-//        list.setAdapter(adapter);
-//    }
-//
-//    private void registerClickCallback() {
-//        ListView list = (ListView) findViewById(R.id.joinListView);
-//        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
-//                new JoinGetIO().execute();
-//                TextView textview = (TextView) viewClicked;
-//                String message = "You clicked # " + position + " which is string: " + textview.getText().toString();
-//                Toast.makeText(JoinScreen.this, message, Toast.LENGTH_LONG).show();
-//            }
-//        });
-//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -91,7 +61,6 @@ public class JoinScreen extends LoginScreen {
         //execute get and post
         new JoinGetIO().execute();
     }
-
 
     public class JoinGetIO extends AsyncTask<Void, Void, String> {
         protected String getASCIIContentFromEntity(HttpEntity entity) throws IllegalStateException, IOException {
@@ -150,8 +119,8 @@ public class JoinScreen extends LoginScreen {
             /*
             * taxi_loc is the string array
             * To-do:
-            * Populate list view with the array contents
-            * Get onclick on a specific item in list view working
+            * Populate list view with the array contents - done
+            * Get onclick on a specific item in list view working - done
             * Send message to user who is carpooling that taxi (arka)
             */
             } catch (Exception e) {

@@ -39,11 +39,13 @@ public class RequestScreen extends LoginScreen implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_screen);
         findViewById(R.id.reqOrder).setOnClickListener(this);
-
+        findViewById(R.id.reqJoin).setOnClickListener(this);
     }
     public void onClick(View arg0) {
         Button order_btn = (Button) findViewById(R.id.reqOrder);
         order_btn.setClickable(false);
+        Button join_btn = (Button) findViewById(R.id.reqJoin);
+        join_btn.setClickable(false);
         //execute get and post
         new OrderIO().execute();
     }
@@ -135,6 +137,8 @@ public class RequestScreen extends LoginScreen implements View.OnClickListener {
         protected void onPostExecute(String results) {
             Button b = (Button) findViewById(R.id.reqOrder);
             b.setClickable(true);
+            Button join_btn = (Button) findViewById(R.id.reqJoin);
+            join_btn.setClickable(true);
         }
 
 
@@ -157,4 +161,6 @@ public class RequestScreen extends LoginScreen implements View.OnClickListener {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }

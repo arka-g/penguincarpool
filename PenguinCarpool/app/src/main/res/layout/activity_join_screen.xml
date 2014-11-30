@@ -23,14 +23,14 @@
         android:id="@+id/randBtn"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true" />
-
+<!--
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listView"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/randBtn" />
-    <!--
+    -->
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -42,6 +42,6 @@
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             />
-            -->
+
 
 </RelativeLayout>

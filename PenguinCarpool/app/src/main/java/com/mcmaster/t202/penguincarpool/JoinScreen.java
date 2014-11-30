@@ -101,8 +101,14 @@ public class JoinScreen extends LoginScreen implements View.OnClickListener {
 //                Log.d("taxi_loc", Arrays.toString(taxi_loc));
 
 
-                return text;
-
+                return Arrays.toString(taxi_loc);
+            /*
+            * taxi_loc is the string array
+            * To-do:
+            * Populate list view with the array contents
+            * Get onclick on a specific item in list view working
+            * Send message to user who is carpooling that taxi (arka)
+            */
             } catch (Exception e) {
                 return e.getLocalizedMessage();
             }

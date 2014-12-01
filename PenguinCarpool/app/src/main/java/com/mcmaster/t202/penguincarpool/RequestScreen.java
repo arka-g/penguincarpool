@@ -39,27 +39,25 @@ public class RequestScreen extends LoginScreen implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_screen);
         findViewById(R.id.reqOrder).setOnClickListener(this);
-
+        findViewById(R.id.reqJoin).setOnClickListener(this);
     }
+
     public void onClick(View arg0) {
         Button order_btn = (Button) findViewById(R.id.reqOrder);
         order_btn.setClickable(false);
-        //execute get and post
-        new OrderIO().execute();
+        Button join_btn = (Button) findViewById(R.id.reqJoin);
+        join_btn.setClickable(false);
+
+        if (arg0.equals(order_btn)) {
+            //execute get and post
+            new OrderIO().execute();
+        }
+        else if (arg0.equals(join_btn)){
+            new JoinIO().execute();
+        }
     }
+
     private class OrderIO extends AsyncTask<Void, Void, String> {
-//        protected String getASCIIContentFromEntity(HttpEntity entity) throws IllegalStateException, IOException {
-//            InputStream in = entity.getContent();
-//
-//            StringBuffer out = new StringBuffer();
-//            int n = 1;
-//            while (n > 0) {
-//                byte[] b = new byte[4096];
-//                n = in.read(b);
-//                if (n > 0) out.append(new String(b, 0, n));
-//            }
-//            return out.toString();
-//        }
 
         @Override
 
@@ -73,13 +71,15 @@ public class RequestScreen extends LoginScreen implements View.OnClickListener {
 
             //HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-            HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/neworder");
+          //  HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/neworder");
+//for phone:
+            HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/neworder");
 
             //Post Data
             List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(3);
             nameValuePair.add(new BasicNameValuePair("User_Location", str_loc));
             nameValuePair.add(new BasicNameValuePair("User_destination", str_dec));
-            Log.d("ID",Integer.toString(id));
+           // Log.d("ID",Integer.toString(id));
             nameValuePair.add(new BasicNameValuePair("user_id", Integer.toString(id)));
 
             //Encoding POST data
@@ -93,7 +93,7 @@ public class RequestScreen extends LoginScreen implements View.OnClickListener {
             //making POST request.
             try {
                 HttpResponse response = httpClient.execute(httpPost);
-                startActivity(new Intent(RequestScreen.this, IdleScreen.class));
+                startActivity(new Intent(RequestScreen.this, HomeScreen.class));
                 // write response to log
                 Log.d("Http Post Response:", response.toString());
             } catch (ClientProtocolException e) {
@@ -105,36 +105,70 @@ public class RequestScreen extends LoginScreen implements View.OnClickListener {
                 Log.d("IO Exception", e.toString());
                 e.printStackTrace();
             }
-//            //verify login
-//            HttpContext localContext = new BasicHttpContext();
-//            HttpGet httpGet = new HttpGet("http://10.0.2.2/penguin-carpool/public/login");
-//            String text = null;
-//            try {
-//                HttpResponse response1 = httpClient.execute(httpGet, localContext);
-//                HttpEntity entity = response1.getEntity();
-//                text = getASCIIContentFromEntity(entity);
-//
-//                JSONObject text_obj = new JSONObject(text);
-//                String status = text_obj.getString("status");
-//                //int id = text_obj.getInt("3");
-//                //transition to home screen if credentials are valid
-//                if (status.equals("200")) {
-//                    startActivity(new Intent(LoginScreen.this, HomeScreen.class));
-//                }
-//                else {
-//                    //login error popup?
-//                }
-//                return text;
-//
-//            } catch (Exception e) {
-//                return e.getLocalizedMessage();
-//            }
             return str_dec;
         }
 
         protected void onPostExecute(String results) {
-            Button b = (Button) findViewById(R.id.reqOrder);
-            b.setClickable(true);
+            Button order_btn = (Button) findViewById(R.id.reqOrder);
+            order_btn.setClickable(true);
+        }
+
+
+    }
+    private class JoinIO extends AsyncTask<Void, Void, String> {
+
+        @Override
+
+        protected String doInBackground(Void... params) {
+
+            EditText user_location = (EditText) findViewById(R.id.reqPickup);
+            EditText user_destination = (EditText) findViewById(R.id.reqDropoff);
+
+            String str_loc = user_location.getText().toString();
+            String str_dec = user_destination.getText().toString();
+
+            //HttpClient httpClient = new DefaultHttpClient();
+            // replace with your url
+            //HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/neworder");
+            //for phone:
+            HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/neworder");
+            //Post Data
+            List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(3);
+            nameValuePair.add(new BasicNameValuePair("User_Location", str_loc));
+            nameValuePair.add(new BasicNameValuePair("User_destination", str_dec));
+            // Log.d("ID",Integer.toString(id));
+            nameValuePair.add(new BasicNameValuePair("user_id", Integer.toString(id)));
+
+            //Encoding POST data
+            try {
+                httpPost.setEntity(new UrlEncodedFormEntity(nameValuePair));
+            } catch (UnsupportedEncodingException e) {
+                // log exception
+                e.printStackTrace();
+            }
+
+            //making POST request.
+            try {
+                HttpResponse response = httpClient.execute(httpPost);
+                startActivity(new Intent(RequestScreen.this, JoinScreen.class));
+                // write response to log
+                Log.d("Http Post Response:", response.toString());
+            } catch (ClientProtocolException e) {
+                // Log exception
+                Log.d("Client Exception", e.toString());
+                e.printStackTrace();
+            } catch (IOException e) {
+                // Log exception
+                Log.d("IO Exception", e.toString());
+                e.printStackTrace();
+            }
+
+            return str_dec;
+        }
+
+        protected void onPostExecute(String results) {
+            Button join_btn = (Button) findViewById(R.id.reqJoin);
+            join_btn.setClickable(true);
         }
 
 
@@ -157,4 +191,6 @@ public class RequestScreen extends LoginScreen implements View.OnClickListener {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }

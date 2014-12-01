@@ -32,5 +32,14 @@ class UserTableSeeder extends Seeder
 		            User::create($user);
 		        }
 
+		DB::table('taxis')->truncate();
+
+		$taxis_insert = [
+			[
+				'taxi_location'=>'fff',
+				'active_state'=>''
+			],
+
+		];
 	}
 }

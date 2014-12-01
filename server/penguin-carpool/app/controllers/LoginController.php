@@ -4,7 +4,7 @@ class LoginController extends BaseController{
 
 	public function showLogin(){
 		if (Auth::check()){
-			return Response::json(['status'=>200,Auth::user()->first_name, Auth::user()->last_name, Auth::user()->email]);
+			return Response::json(['status'=>200,Auth::user()->first_name, Auth::user()->last_name, Auth::user()->email, Auth::user()->id]);
 		}
 		else{
 			return Response::json(['status'=>400, "User not logged in"]);

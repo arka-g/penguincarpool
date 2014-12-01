@@ -1,8 +1,6 @@
 package com.mcmaster.t202.penguincarpool;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.AsyncTask;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -12,18 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.message.BasicNameValuePair;
-
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class ProfileScreen extends LoginScreen {
@@ -40,9 +26,9 @@ public class ProfileScreen extends LoginScreen {
         textView.setText(firstname);
         textView1.setText(lastname);
         textView2.setText(email);
-        
+        //hack for now. come back to it and add a real rating system
+        rating.setRating(id);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -50,82 +36,7 @@ public class ProfileScreen extends LoginScreen {
         getMenuInflater().inflate(R.menu.view_profile, menu);
         return true;
     }
-    public void onClick(View arg0) {
-        Button order_btn = (Button) findViewById(R.id.reqOrder);
-        order_btn.setClickable(false);
-        RatingBar rating = (RatingBar) findViewById(R.id.userRatingAve);
-        rating.setClickable(false);
-        //execute get and post
-        new RatingIO().execute();
-    }
-    private class RatingIO extends AsyncTask<Void, Void, String> {
-//        protected String getASCIIContentFromEntity(HttpEntity entity) throws IllegalStateException, IOException {
-//            InputStream in = entity.getContent();
-//
-//            StringBuffer out = new StringBuffer();
-//            int n = 1;
-//            while (n > 0) {
-//                byte[] b = new byte[4096];
-//                n = in.read(b);
-//                if (n > 0) out.append(new String(b, 0, n));
-//            }
-//            return out.toString();
-//        }
 
-        @Override
-
-        protected String doInBackground(Void... params) {
-
-            RatingBar rating = (RatingBar) findViewById(R.id.userRatingAve);
-
-
-            String str_loc = user_location.getText().toString();
-            String str_dec = user_destination.getText().toString();
-
-            //HttpClient httpClient = new DefaultHttpClient();
-            // replace with your url
-            HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/rating");
-
-            //Post Data
-            List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(1);
-//            Log.d("ID", Integer.toString(id));
-
-            nameValuePair.add(new BasicNameValuePair("rating", str_loc));
-
-            //Encoding POST data
-            try {
-                httpPost.setEntity(new UrlEncodedFormEntity(nameValuePair));
-            } catch (UnsupportedEncodingException e) {
-                // log exception
-                e.printStackTrace();
-            }
-
-            //making POST request.
-            try {
-                HttpResponse response = httpClient.execute(httpPost);
-                // write response to log
-                Log.d("Http Post Response:", response.toString());
-            } catch (ClientProtocolException e) {
-                // Log exception
-                Log.d("Client Exception", e.toString());
-                e.printStackTrace();
-            } catch (IOException e) {
-                // Log exception
-                Log.d("IO Exception", e.toString());
-                e.printStackTrace();
-            }
-            return str_dec;
-        }
-
-        protected void onPostExecute(String results) {
-            Button b = (Button) findViewById(R.id.reqOrder);
-            b.setClickable(true);
-            RatingBar rating = (RatingBar) findViewById(R.id.userRatingAve);
-            rating.setClickable(true);
-        }
-
-
-    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

@@ -16,6 +16,7 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+//for testing
 Route::get('auth', function(){
 	return View::make('authpage');
 });
@@ -50,7 +51,29 @@ Route::get('userpage',array('uses' => 'UserController@getUserPage'));
 /*
 | ORDER ROUTES |
 */
-Route::get('neworder', array('uses'=>'OrderController@create'));
+Route::post('neworder', array('uses'=>'OrderController@create'));
+//for testing
+Route::get('order', function(){
+	return View::make('order');
+});
+/*
+| TAXI ROUTE |
+*/
+//get available taxis
+Route::get('taxiList', array('uses'=>'TaxiController@getTaxi'));
+//get active taxis
+Route::get('activeTaxi', array('uses'=>'TaxiController@ActiveTaxis'));
+//get carpool taxis
+Route::get('carpool', array('uses'=>'TaxiController@carpoolTaxis'));
+
+
+
+
+
+
+
+
+
 // Route::get('/test', 'UserController@loginPage');
 // Route::get('/auth', 'UserController@authpage');
 // Route::post('/check_login',array('uses'=>'LoginController@loginPost'));

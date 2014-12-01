@@ -44,7 +44,7 @@
     <Button
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Order"
+        android:text="Order (Extra)"
         android:id="@+id/reqOrder"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
@@ -53,10 +53,11 @@
     <Button
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Join"
+        android:text="Join (Request)"
         android:id="@+id/reqJoin"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
 
 </RelativeLayout>

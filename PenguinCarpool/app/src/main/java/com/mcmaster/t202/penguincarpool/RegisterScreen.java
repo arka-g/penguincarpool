@@ -1,18 +1,17 @@
 package com.mcmaster.t202.penguincarpool;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-//encryption
-//import android.util.Base64;
-//import org.apache.commons.codec.binary.Base64;
-
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -27,6 +26,10 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+
+//encryption
+//import android.util.Base64;
+//import org.apache.commons.codec.binary.Base64;
 
 
 public class RegisterScreen extends Activity implements View.OnClickListener {
@@ -76,7 +79,7 @@ public class RegisterScreen extends Activity implements View.OnClickListener {
 
             HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-           HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/save");
+           HttpPost httpPost = new HttpPost("http://192.168.0.16/penguin-carpool/public/save");
 //            HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/save");
             //Post Data
             List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(4);
@@ -116,6 +119,14 @@ public class RegisterScreen extends Activity implements View.OnClickListener {
         protected void onPostExecute(String results) {
             Button b = (Button) findViewById(R.id.regSubmitInfo);
             b.setClickable(true);
+
+            // Display sucessful registration
+            Toast toast = Toast.makeText(RegisterScreen.this, "You are now a penguin!", Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.TOP, 25, 400);
+            toast.show();
+
+            // Return to LoginScreen
+            startActivity(new Intent(RegisterScreen.this, LoginScreen.class));
         }
 
 

@@ -1,7 +1,6 @@
 package com.mcmaster.t202.penguincarpool;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -24,7 +24,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -106,7 +105,7 @@ public class LoginScreen extends Activity implements View.OnClickListener {
 
             //HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-            HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/login");
+            HttpPost httpPost = new HttpPost("http://192.168.0.16/penguin-carpool/public/login");
             //HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/login");
             //Post Data
             List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
@@ -139,7 +138,7 @@ public class LoginScreen extends Activity implements View.OnClickListener {
             }
             //verify login
             HttpContext localContext = new BasicHttpContext();
-            HttpGet httpGet = new HttpGet("http://10.0.2.2/penguin-carpool/public/login");
+            HttpGet httpGet = new HttpGet("http://192.168.0.16/penguin-carpool/public/login");
             //for phone
 //            HttpGet httpGet = new HttpGet("http://172.17.31.169/penguin-carpool/public/login");
 
@@ -148,6 +147,8 @@ public class LoginScreen extends Activity implements View.OnClickListener {
                 HttpResponse response1 = httpClient.execute(httpGet, localContext);
                 HttpEntity entity = response1.getEntity();
                 text = getASCIIContentFromEntity(entity);
+                // Uncomment below and comment login if statement to bypass user authentication
+                //startActivity(new Intent(LoginScreen.this, HomeScreen.class));
 
                 JSONObject text_obj = new JSONObject(text);
                 String status = text_obj.getString("status");
@@ -162,7 +163,10 @@ public class LoginScreen extends Activity implements View.OnClickListener {
                     startActivity(new Intent(LoginScreen.this, HomeScreen.class));
                 }
                 else {
-                    //login error popup?
+                    // Display failed login
+                    Toast toast = Toast.makeText(LoginScreen.this, "Login Unsuccessful", Toast.LENGTH_LONG);
+                    //toast.setGravity(Gravity.TOP, 25, 400);
+                    toast.show();
                 }
                 return text;
 
@@ -178,22 +182,7 @@ public class LoginScreen extends Activity implements View.OnClickListener {
 
 
     }
-    // Popup to be called in case of Login Error.
-    public class msgLoginError extends Activity implements View.OnClickListener{
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_login_screen);
-        }
-        public void onClick(View v) {}
-        public void launchHomeScreen(View v) {
-            new AlertDialog.Builder(this)
-                    .setTitle("Login Error")
-                    .setMessage("You don' goofed... Please try again.")
-                    .setNeutralButton("Ok", null)
-                    .show();
-        }
-    }
+
     // Launch RegisterScreen from LoginScreen
     public void launchRegisterScreen(View v){
         startActivity(new Intent(LoginScreen.this, RegisterScreen.class));

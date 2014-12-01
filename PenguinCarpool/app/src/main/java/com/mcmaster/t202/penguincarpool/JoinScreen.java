@@ -1,17 +1,14 @@
 package com.mcmaster.t202.penguincarpool;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -92,7 +89,7 @@ public class JoinScreen extends LoginScreen {
         protected String doInBackground(Void... params) {
             HttpContext localContext = new BasicHttpContext();
             //get available taxis
-            HttpGet httpGet = new HttpGet("http://10.0.2.2/penguin-carpool/public/carpool");
+            HttpGet httpGet = new HttpGet("http://192.168.0.16/penguin-carpool/public/carpool");
             String text = null;
             try {
                 HttpResponse response2 = httpClient.execute(httpGet, localContext);
@@ -113,9 +110,9 @@ public class JoinScreen extends LoginScreen {
                 }
 
                 adapter = new ArrayAdapter<String>(
-                        JoinScreen.this,                       // Context for the activity
-                        R.layout.available_taxis,   // Layout to use
-                        taxi_loc);                     // Items to display
+                        JoinScreen.this,                        // Context for the activity
+                        R.layout.available_taxis,               // Layout to use
+                        taxi_loc);                              // Items to display
 
 //                Log.d("before",Arrays.toString(taxi_loc));
 //                Log.d("after",Arrays.toString(taxi_loc));
@@ -148,7 +145,7 @@ public class JoinScreen extends LoginScreen {
                     StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
                     StrictMode.setThreadPolicy(policy);
-                    HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/messagePost");
+                    HttpPost httpPost = new HttpPost("http://192.168.0.16/penguin-carpool/public/messagePost");
                     //Post Data
                     List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(1);
                     nameValuePair.add(new BasicNameValuePair("Type_Message" +
@@ -185,6 +182,7 @@ public class JoinScreen extends LoginScreen {
                         e.printStackTrace();
                     }
 //                    startActivity(new Intent(JoinScreen.this, ProfileScreen.class));
+
                 }
             });
         }

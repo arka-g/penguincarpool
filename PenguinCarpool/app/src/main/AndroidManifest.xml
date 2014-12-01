@@ -65,6 +65,6 @@
         <activity
             android:name=".MapScreen"
             android:label="MapScreen" />
-    </application>
 
+    </application>
 </manifest>

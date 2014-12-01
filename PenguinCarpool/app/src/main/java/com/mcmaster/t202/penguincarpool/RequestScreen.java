@@ -1,6 +1,5 @@
 package com.mcmaster.t202.penguincarpool;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,22 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.protocol.BasicHttpContext;
-import org.apache.http.protocol.HttpContext;
-import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +62,7 @@ public class RequestScreen extends LoginScreen implements View.OnClickListener {
 
             //HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-            HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/neworder");
+            HttpPost httpPost = new HttpPost("http://192.168.0.16/penguin-carpool/public/neworder");
 //for phone:
 //            HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/neworder");
 
@@ -129,7 +120,7 @@ public class RequestScreen extends LoginScreen implements View.OnClickListener {
 
             //HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-            HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/neworder");
+            HttpPost httpPost = new HttpPost("http://192.168.0.16/penguin-carpool/public/neworder");
             //for phone:
 //            HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/neworder");
             //Post Data

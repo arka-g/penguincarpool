@@ -40,6 +40,7 @@ public class LoginScreen extends Activity implements View.OnClickListener {
     public static String firstname;
     public static String lastname;
     public static String email;
+    public static String message;
     public static int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,8 +106,8 @@ public class LoginScreen extends Activity implements View.OnClickListener {
 
             //HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-//            HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/login");
-            HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/login");
+            HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/login");
+            //HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/login");
             //Post Data
             List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
             nameValuePair.add(new BasicNameValuePair("email", login_email));
@@ -138,9 +139,9 @@ public class LoginScreen extends Activity implements View.OnClickListener {
             }
             //verify login
             HttpContext localContext = new BasicHttpContext();
-//            HttpGet httpGet = new HttpGet("http://10.0.2.2/penguin-carpool/public/login");
+            HttpGet httpGet = new HttpGet("http://10.0.2.2/penguin-carpool/public/login");
             //for phone
-            HttpGet httpGet = new HttpGet("http://172.17.31.169/penguin-carpool/public/login");
+//            HttpGet httpGet = new HttpGet("http://172.17.31.169/penguin-carpool/public/login");
 
             String text = null;
             try {
@@ -153,6 +154,7 @@ public class LoginScreen extends Activity implements View.OnClickListener {
                 firstname = text_obj.getString("0");
                 lastname = text_obj.getString("1");
                 email = text_obj.getString("2");
+                message = text_obj.getString("4");
                 id = text_obj.getInt("3");
                 Log.d("ID",Integer.toString(id));
                 //transition to home screen if credentials are valid

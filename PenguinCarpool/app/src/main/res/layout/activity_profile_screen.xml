@@ -79,4 +79,15 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/userMessage"
+        android:text="You will recieve messages here"
+        android:layout_below="@+id/userLastName"
+        android:layout_alignLeft="@+id/userRatingText"
+        android:layout_marginTop="20dp"
+        android:textSize="15dp"
+        />
+
 </RelativeLayout>

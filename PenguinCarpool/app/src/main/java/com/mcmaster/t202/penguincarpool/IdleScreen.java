@@ -83,8 +83,8 @@ public class IdleScreen extends LoginScreen {
 
            // HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-            // HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/save");
-            HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/updateState");
+            HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/updateState");
+           // HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/updateState");
             //Post Data
             List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(5);
             nameValuePair.add(new BasicNameValuePair("id", Integer.toString(qrVal)));

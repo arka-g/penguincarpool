@@ -3,6 +3,7 @@ package com.mcmaster.t202.penguincarpool;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -72,7 +73,8 @@ public class JoinScreen extends LoginScreen {
     }
   //  public String[] taxi_loc;
     public class JoinGetIO extends AsyncTask<Void, Void, String> {
-        protected String getASCIIContentFromEntity(HttpEntity entity) throws IllegalStateException, IOException {
+
+      protected String getASCIIContentFromEntity(HttpEntity entity) throws IllegalStateException, IOException {
             InputStream in = entity.getContent();
             StringBuffer out = new StringBuffer();
             int n = 1;
@@ -90,7 +92,7 @@ public class JoinScreen extends LoginScreen {
         protected String doInBackground(Void... params) {
             HttpContext localContext = new BasicHttpContext();
             //get available taxis
-            HttpGet httpGet = new HttpGet("http://172.17.31.169/penguin-carpool/public/carpool");
+            HttpGet httpGet = new HttpGet("http://10.0.2.2/penguin-carpool/public/carpool");
             String text = null;
             try {
                 HttpResponse response2 = httpClient.execute(httpGet, localContext);
@@ -142,35 +144,47 @@ public class JoinScreen extends LoginScreen {
                     TextView textview = (TextView) viewClicked;
                     String message = "You clicked # " + position + " which is string: " + textview.getText().toString();
                     Toast.makeText(JoinScreen.this, message, Toast.LENGTH_LONG).show();
-//                    HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/message");
-//                    //Post Data
-//                    List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(1);
-//                    nameValuePair.add(new BasicNameValuePair("taxi_location", textview.getText().toString()));
-//
-//                    //Encoding POST data
-//                    try {
-//                        httpPost.setEntity(new UrlEncodedFormEntity(nameValuePair));
-//                    } catch (UnsupportedEncodingException e) {
-//                        // log exception
-//                        e.printStackTrace();
-//                    }
-//
-//                    //making POST request.
-//                    try {
-//                        HttpResponse response = httpClient.execute(httpPost);
-//                        // write response to log
-//                        Log.d("Http Post Response:", response.toString());
-//
-//                    } catch (ClientProtocolException e) {
-//                        // Log exception
-//                        Log.d("Client Exception", e.toString());
-//                        e.printStackTrace();
-//                    } catch (IOException e) {
-//                        // Log exception
-//                        Log.d("IO Exception", e.toString());
-//                        e.printStackTrace();
-//                    }
-//                    startActivity(new Intent(JoinScreen.this, MapScreen.class));
+                    //fix this
+                    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+                    StrictMode.setThreadPolicy(policy);
+                    HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/messagePost");
+                    //Post Data
+                    List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(1);
+                    nameValuePair.add(new BasicNameValuePair("Type_Message" +
+                            "", textview.getText().toString()));
+                    Log.d("first", "im alive");
+
+                    //Encoding POST data
+                    try {
+                        Log.d("second", "im alive");
+
+                        httpPost.setEntity(new UrlEncodedFormEntity(nameValuePair));
+                    } catch (UnsupportedEncodingException e) {
+                        // log exception
+                        e.printStackTrace();
+                    }
+
+                    //making POST request.
+                    try {
+                        Log.d("third", "im alive");
+
+                        HttpResponse response_post = httpClient.execute(httpPost);
+                        // write response to log
+                        Log.d("fourth", "im alive");
+
+                        Log.d("Http Post Response:", response_post.toString());
+
+                    } catch (ClientProtocolException e) {
+                        // Log exception
+                        Log.d("Client Exception", e.toString());
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        // Log exception
+                        Log.d("IO Exception", e.toString());
+                        e.printStackTrace();
+                    }
+//                    startActivity(new Intent(JoinScreen.this, ProfileScreen.class));
                 }
             });
         }

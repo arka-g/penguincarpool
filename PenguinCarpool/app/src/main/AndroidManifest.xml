@@ -62,6 +62,9 @@
             android:configChanges="keyboardHidden|screenSize" >
         </activity>
         <activity android:name=".JoinScreen" />
+        <activity
+            android:name=".MapScreen"
+            android:label="MapScreen" />
     </application>
 
 </manifest>

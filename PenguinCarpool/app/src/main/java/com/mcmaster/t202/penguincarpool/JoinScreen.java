@@ -1,5 +1,6 @@
 package com.mcmaster.t202.penguincarpool;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +17,12 @@ import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.json.JSONArray;
@@ -24,7 +30,10 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 
 // Array of option --> ArrayAdapter --> ListView
@@ -61,7 +70,7 @@ public class JoinScreen extends LoginScreen {
         //execute get and post
         new JoinGetIO().execute();
     }
-
+  //  public String[] taxi_loc;
     public class JoinGetIO extends AsyncTask<Void, Void, String> {
         protected String getASCIIContentFromEntity(HttpEntity entity) throws IllegalStateException, IOException {
             InputStream in = entity.getContent();
@@ -92,28 +101,22 @@ public class JoinScreen extends LoginScreen {
                 JSONArray jsonArray = text_obj.getJSONArray("taxi");
                 int len = jsonArray.length();
                 String taxi_loc[] = new String[len];
+                //user array
+                String user_id[] = new String[len];
 
                 for (int i = 0; i < len; i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     taxi_loc[i] = jsonObject.getString("taxi_location");
-                    //String taxi_id = jsonObject.getString("id");
-                    //Log.d("taxi_id", taxi_id);
-                    //Log.d("Json Object", jsonObject.toString());
+                    user_id[i]=jsonObject.getString("user_id");
                 }
-                //Log.d("taxi_loc", Arrays.toString(taxi_loc));
 
                 adapter = new ArrayAdapter<String>(
                         JoinScreen.this,                       // Context for the activity
                         R.layout.available_taxis,   // Layout to use
                         taxi_loc);                     // Items to display
 
-                Log.d("before",Arrays.toString(taxi_loc));
-                // Configure listview
-                //ListView list = (ListView) findViewById(R.id.joinListView);
-                //list.setAdapter(adapter);
-
-                Log.d("after",Arrays.toString(taxi_loc));
-              //  Log.d("adapter",adapter);
+//                Log.d("before",Arrays.toString(taxi_loc));
+//                Log.d("after",Arrays.toString(taxi_loc));
 
                 return Arrays.toString(taxi_loc);
             /*
@@ -139,12 +142,43 @@ public class JoinScreen extends LoginScreen {
                     TextView textview = (TextView) viewClicked;
                     String message = "You clicked # " + position + " which is string: " + textview.getText().toString();
                     Toast.makeText(JoinScreen.this, message, Toast.LENGTH_LONG).show();
+//                    HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/message");
+//                    //Post Data
+//                    List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(1);
+//                    nameValuePair.add(new BasicNameValuePair("taxi_location", textview.getText().toString()));
+//
+//                    //Encoding POST data
+//                    try {
+//                        httpPost.setEntity(new UrlEncodedFormEntity(nameValuePair));
+//                    } catch (UnsupportedEncodingException e) {
+//                        // log exception
+//                        e.printStackTrace();
+//                    }
+//
+//                    //making POST request.
+//                    try {
+//                        HttpResponse response = httpClient.execute(httpPost);
+//                        // write response to log
+//                        Log.d("Http Post Response:", response.toString());
+//
+//                    } catch (ClientProtocolException e) {
+//                        // Log exception
+//                        Log.d("Client Exception", e.toString());
+//                        e.printStackTrace();
+//                    } catch (IOException e) {
+//                        // Log exception
+//                        Log.d("IO Exception", e.toString());
+//                        e.printStackTrace();
+//                    }
+//                    startActivity(new Intent(JoinScreen.this, MapScreen.class));
                 }
             });
         }
 
 
     }
+
+
 
 
 

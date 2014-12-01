@@ -3,6 +3,10 @@ package com.mcmaster.t202.penguincarpool;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+//encryption
+//import android.util.Base64;
+//import org.apache.commons.codec.binary.Base64;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -67,6 +71,8 @@ public class RegisterScreen extends Activity implements View.OnClickListener {
             String str3 = email.getText().toString();
             //String str4 = username.getText().toString();
             String str5 = password.getText().toString();
+
+            //byte[] encodedBytes = Base64.encodeBase64(str1.getBytes());
 
             HttpClient httpClient = new DefaultHttpClient();
             // replace with your url

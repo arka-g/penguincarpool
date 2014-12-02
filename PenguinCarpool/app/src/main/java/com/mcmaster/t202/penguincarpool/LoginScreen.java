@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -159,15 +160,15 @@ public class LoginScreen extends Activity implements View.OnClickListener {
                 id = text_obj.getInt("3");
                 Log.d("ID",Integer.toString(id));
                 //transition to home screen if credentials are valid
-                if (status.equals("200")) {
+                //if (status.equals("200")) {
                     startActivity(new Intent(LoginScreen.this, HomeScreen.class));
-                }
-                else {
+               // }
+                //else {
                     // Display failed login
-                    Toast toast = Toast.makeText(LoginScreen.this, "Login Unsuccessful", Toast.LENGTH_LONG);
+                //    Toast toast = Toast.makeText(LoginScreen.this, "Login Unsuccessful", Toast.LENGTH_LONG);
                     //toast.setGravity(Gravity.TOP, 25, 400);
-                    toast.show();
-                }
+                //    toast.show();
+                //}
                 return text;
 
             } catch (Exception e) {
@@ -178,6 +179,7 @@ public class LoginScreen extends Activity implements View.OnClickListener {
         protected void onPostExecute(String results) {
             Button login_btn = (Button) findViewById(R.id.loginButton);
             login_btn.setClickable(true);
+
         }
 
 

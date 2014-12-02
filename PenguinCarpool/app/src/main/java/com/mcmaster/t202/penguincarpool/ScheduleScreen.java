@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class ScheduleScreen extends Activity {
+public class ScheduleScreen extends LoginScreen {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

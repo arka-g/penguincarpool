@@ -89,7 +89,7 @@ public class JoinScreen extends LoginScreen {
         protected String doInBackground(Void... params) {
             HttpContext localContext = new BasicHttpContext();
             //get available taxis
-            HttpGet httpGet = new HttpGet("http://192.168.0.16/penguin-carpool/public/carpool");
+            HttpGet httpGet = new HttpGet("http://10.0.2.2/penguin-carpool/public/carpool");
             String text = null;
             try {
                 HttpResponse response2 = httpClient.execute(httpGet, localContext);
@@ -145,11 +145,12 @@ public class JoinScreen extends LoginScreen {
                     StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
                     StrictMode.setThreadPolicy(policy);
-                    HttpPost httpPost = new HttpPost("http://192.168.0.16/penguin-carpool/public/messagePost");
+                    HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/messagePost");
                     //Post Data
-                    List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(1);
-                    nameValuePair.add(new BasicNameValuePair("Type_Message" +
-                            "", textview.getText().toString()));
+                    List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
+                    nameValuePair.add(new BasicNameValuePair("Type_Message", textview.getText().toString()));
+                    nameValuePair.add(new BasicNameValuePair("User_ID", Integer.toString(JoinScreen.id)));
+
                     Log.d("first", "im alive");
 
                     //Encoding POST data

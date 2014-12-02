@@ -105,7 +105,7 @@ public class LoginScreen extends Activity implements View.OnClickListener {
 
             //HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-            HttpPost httpPost = new HttpPost("http://192.168.0.16/penguin-carpool/public/login");
+            HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/login");
             //HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/login");
             //Post Data
             List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
@@ -138,7 +138,7 @@ public class LoginScreen extends Activity implements View.OnClickListener {
             }
             //verify login
             HttpContext localContext = new BasicHttpContext();
-            HttpGet httpGet = new HttpGet("http://192.168.0.16/penguin-carpool/public/login");
+            HttpGet httpGet = new HttpGet("http://10.0.2.2/penguin-carpool/public/login");
             //for phone
 //            HttpGet httpGet = new HttpGet("http://172.17.31.169/penguin-carpool/public/login");
 

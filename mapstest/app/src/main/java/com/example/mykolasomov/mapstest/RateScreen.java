@@ -60,7 +60,7 @@ public class RateScreen extends LoginScreen{
             String ratingSubmit = textrating.getText().toString();
 
             // replace with your url
-            HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/rate");
+            HttpPost httpPost = new HttpPost("http://172.17.87.146/penguin-carpool/public/rate");
 //            HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/save");
             //Post Data
             List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);

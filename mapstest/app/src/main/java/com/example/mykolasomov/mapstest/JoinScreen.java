@@ -40,6 +40,7 @@ import java.util.List;
 
 
 public class JoinScreen extends com.example.mykolasomov.mapstest.LoginScreen {
+    public static String d;
 
 
     @Override
@@ -139,6 +140,7 @@ public class JoinScreen extends com.example.mykolasomov.mapstest.LoginScreen {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
                     TextView textview = (TextView) viewClicked;
+                    d = textview.getText().toString();
                     String message = "You clicked # " + position + " which is string: " + textview.getText().toString();
                     Toast.makeText(JoinScreen.this, message, Toast.LENGTH_LONG).show();
                     //fix this

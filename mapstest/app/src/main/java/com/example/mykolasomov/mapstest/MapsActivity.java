@@ -94,10 +94,20 @@ public class MapsActivity extends FragmentActivity {
         mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(12));
         markerOptions = new MarkerOptions();
 
-        fromPosition = drawPoint(loc);
-        toPosition = drawPoint(dest);
-         detour = null;
+//        fromPosition = drawPoint(loc);
+//        toPosition = drawPoint(dest);
+//         detour = null;
         //detour = drawPoint("40 wilson street hamilton ontario");
+        if(JoinScreen.d!=null){;
+            detour = drawPoint(JoinScreen.d);
+            toPosition = drawPoint(dest);
+            fromPosition = drawPoint(loc);
+        }
+        else {
+            fromPosition = drawPoint(loc);
+            toPosition = drawPoint(dest);
+            detour = null;
+        }
 
         mGoogleMap.setMyLocationEnabled(true);
         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(fromPosition, 10));

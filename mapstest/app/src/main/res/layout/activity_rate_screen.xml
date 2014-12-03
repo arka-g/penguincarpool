@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="User's current rating"
-        android:id="@+id/textView"
+        android:id="@+id/userMessage"
         android:layout_above="@+id/ratingBar"
         android:layout_centerHorizontal="true" />
 

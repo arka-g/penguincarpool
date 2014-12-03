@@ -2,24 +2,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="5dp"
-    android:paddingTop="5dp"
-    android:paddingLeft="5dp"
-    android:paddingRight="5dp"
     tools:context="com.example.mykolasomov.mapstest.HomeScreen"
     android:id="@+id/layoutHomeScreen"
-    android:background="@drawable/home_screen_bg">
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="175dp"
-        android:editable="false"
-        android:id="@+id/my_edit"/>
+    android:background="@drawable/login_screen_bg">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:id="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="-40dp"
+        android:layout_marginBottom="-40dp"
+        android:background="@drawable/home_screen_square"
+        android:layout_alignBottom="@+id/orderTaxi"
+        android:layout_alignTop="@+id/scheduleTaxi"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Schedule Name"
+        android:text="Schedule Taxi"
         android:id="@+id/scheduleTaxi"
         android:layout_marginTop="210dp"
         android:layout_alignParentTop="true"
@@ -46,9 +48,10 @@
         android:text="View Profile"
         android:id="@+id/viesProfile"
         android:onClick="launchViewProfile"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignBaseline="@+id/viewIdleScreen"
+        android:layout_alignBottom="@+id/viewIdleScreen" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -56,17 +59,22 @@
         android:layout_height="wrap_content"
         android:text="Get In Taxi"
         android:id="@+id/viewIdleScreen"
+        android:layout_marginBottom="10dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-         />
+        android:layout_marginRight="10dp" />
 
     <Button
+        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Are you sure?"
+        android:text="Confirm Taxi Scan"
         android:id="@+id/confirmscan1"
-        android:layout_above="@+id/viesProfile"
-        android:layout_alignRight="@+id/orderTaxi"
-        android:layout_alignEnd="@+id/orderTaxi" />
+        android:layout_above="@+id/viewIdleScreen"
+        android:layout_alignRight="@+id/viewIdleScreen"
+        android:layout_alignEnd="@+id/viewIdleScreen"
+        android:layout_alignLeft="@+id/viewIdleScreen"
+        android:layout_alignStart="@+id/viewIdleScreen" />
+
 </RelativeLayout>

@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -30,6 +32,7 @@ import java.util.List;
 
 public class IdleScreen extends com.example.mykolasomov.mapstest.LoginScreen {
     public static int qrVal2;
+    long startTime = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +40,23 @@ public class IdleScreen extends com.example.mykolasomov.mapstest.LoginScreen {
         findViewById(R.id.idleScan).setOnClickListener(this);
         findViewById(R.id.confirmscan).setOnClickListener(this);
 
+        if (startTime == 0) {
+            startTime = SystemClock.elapsedRealtime();
+            ((Chronometer) findViewById(R.id.chronometer)).start();
+        }
+        else{
+            ((Chronometer) findViewById(R.id.chronometer)).setBase
+                    (SystemClock.elapsedRealtime()- (SystemClock.elapsedRealtime() - startTime));
+            ((Chronometer) findViewById(R.id.chronometer)).start();
+        }
     }
 
+    }
+
+
+    public void onDestroy(){
+        super.onDestroy();
+    }
 
     /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {

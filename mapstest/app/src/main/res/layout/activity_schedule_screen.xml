@@ -8,71 +8,30 @@
         android:text="Please fill out the following form in order to schedule a taxi in advance within the next two weeks (14 days)."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
+        android:padding="20dp"
         android:id="@+id/schedWelcome" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:inputType="date"
         android:ems="10"
         android:id="@+id/schedDate"
-        android:layout_marginTop="27dp"
         android:hint="date (2014-xx-yy)"
         android:layout_below="@+id/schedWelcome"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignLeft="@+id/schedTime"
+        android:layout_alignStart="@+id/schedTime" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:inputType="time"
         android:ems="10"
         android:id="@+id/schedTime"
-        android:layout_alignBottom="@+id/schedDate"
-        android:layout_toRightOf="@+id/schedDate"
-        android:layout_toEndOf="@+id/schedDate"
-        android:hint="time (04:03:15)" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Pickup"
-        android:id="@+id/schedAddEvent"
+        android:hint="time (04:03:15)"
         android:layout_below="@+id/schedDate"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPostalAddress"
-        android:ems="10"
-        android:id="@+id/schedPickup"
-        android:layout_marginTop="44dp"
-        android:layout_below="@+id/schedAddEvent"
-        android:hint="pickup location"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPostalAddress"
-        android:ems="10"
-        android:id="@+id/schedDropoff"
-        android:layout_below="@+id/schedPickup"
-        android:layout_alignRight="@+id/schedPickup"
-        android:layout_alignEnd="@+id/schedPickup"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:hint="dropoff location" />
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -82,8 +41,29 @@
         android:editable="false"
         android:id="@+id/my_edit"
         android:layout_above="@+id/schedSubmitInfo"
-        android:layout_alignRight="@+id/schedTime"
-        android:layout_alignEnd="@+id/schedTime" />
+        android:layout_margin="20dp"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPostalAddress"
+        android:ems="10"
+        android:id="@+id/schedPickup"
+        android:hint="pickup location"
+        android:layout_below="@+id/schedTime"
+        android:layout_alignLeft="@+id/schedTime"
+        android:layout_alignStart="@+id/schedTime" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPostalAddress"
+        android:ems="10"
+        android:id="@+id/schedDropoff"
+        android:hint="dropoff location"
+        android:layout_below="@+id/schedPickup"
+        android:layout_alignLeft="@+id/schedPickup"
+        android:layout_alignStart="@+id/schedPickup" />
 
     <Button
         android:layout_width="wrap_content"
@@ -91,6 +71,7 @@
         android:text="Submit Information"
         android:id="@+id/schedSubmitInfo"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"/>
 
 </RelativeLayout>

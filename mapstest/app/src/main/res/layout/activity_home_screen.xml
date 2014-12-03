@@ -75,6 +75,7 @@
         android:layout_alignRight="@+id/viewIdleScreen"
         android:layout_alignEnd="@+id/viewIdleScreen"
         android:layout_alignLeft="@+id/viewIdleScreen"
-        android:layout_alignStart="@+id/viewIdleScreen" />
+        android:layout_alignStart="@+id/viewIdleScreen"
+        android:layout_marginBottom="10dp"/>
 
 </RelativeLayout>

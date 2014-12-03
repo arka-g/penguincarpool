@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/reg_screen_bg">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/view_profile_header"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/regWelcomeTitle2"
+        android:layout_marginBottom="-20dp"/>
 
     <RatingBar
         android:layout_width="wrap_content"
@@ -18,17 +30,29 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rate your penguin partner!"
-        android:id="@+id/rateText"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="RATE YOUR"
+        android:id="@+id/regWelcomeTitle"
+        android:textStyle="italic"
+        android:autoLink="none"
         android:textSize="30dp"
-        android:singleLine="false"
-        android:layout_above="@+id/ratingBar"
-        android:layout_alignLeft="@+id/ratingBar"
-        android:layout_marginBottom="87dp"
-        android:layout_alignRight="@+id/ratingBar"
-        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
 
-        android:clickable="false" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Penguin Partner"
+        android:id="@+id/regWelcomeTitle2"
+        android:textStyle="bold|italic"
+        android:autoLink="none"
+        android:textSize="40dp"
+        android:gravity="center"
+        android:layout_below="@+id/regWelcomeTitle"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -37,7 +61,7 @@
         android:id="@+id/submitRating"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="49dp" />
+        android:layout_marginBottom="20dp" />
 
     <TextView
         android:layout_width="wrap_content"

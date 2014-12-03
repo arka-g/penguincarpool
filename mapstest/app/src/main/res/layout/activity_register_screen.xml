@@ -2,12 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
-    tools:context="com.example.mykolasomov.mapstest.RegisterScreen"
-    android:background="@drawable/reg_screen_bg">
+    tools:context="com.example.mykolasomov.mapstest.RegisterScreen">
 
     <TextView
-        android:text="Please provide the following basic information so that we may add you to our databse."
+        android:text="Welcome to Penguin Carpool! Please provide the following basic information so that we may add you to our databse."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="5dp"
@@ -15,72 +13,78 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:id="@+id/regWelcome"
-        android:layout_below="@+id/regWelcomeTitle2"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="23dp" />
 
     <EditText
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/regFirstName"
-        android:layout_marginTop="33dp"
-        android:hint="first name"
         android:layout_below="@+id/regWelcome"
-        android:layout_centerHorizontal="true"
-        android:textColorHint="#ffffffff" />
+        android:layout_marginTop="30dp"
+        android:hint="First"
+        android:layout_alignRight="@+id/regWelcome"
+        android:layout_alignEnd="@+id/regWelcome"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/regLastName"
-        android:hint="last name"
         android:layout_below="@+id/regFirstName"
-        android:layout_alignLeft="@+id/regFirstName"
-        android:layout_alignStart="@+id/regFirstName"
-        android:textColorHint="#ffffffff" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/regFirstName"
+        android:layout_alignEnd="@+id/regFirstName"
+        android:hint="Last" />
 
 
     <EditText
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/regEmail"
-        android:hint="example@email.com"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/regLastName"
-        android:layout_alignLeft="@+id/regLastName"
-        android:layout_alignStart="@+id/regLastName"
-        android:textColorHint="#ffffffff" />
+        android:hint="Email"
+        android:layout_above="@+id/regPassword"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/regPassword"
-        android:hint="password"
-        android:layout_below="@+id/regEmail"
-        android:layout_alignLeft="@+id/regEmail"
-        android:layout_alignStart="@+id/regEmail"
-        android:textColorHint="#ffffffff" />
+        android:hint="Password"
+        android:layout_above="@+id/regPasswordConf"
+        android:layout_alignRight="@+id/regEmail"
+        android:layout_alignEnd="@+id/regEmail"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/regPasswordConf"
-        android:hint="confirm password"
-        android:layout_below="@+id/regPassword"
-        android:layout_alignLeft="@+id/regPassword"
-        android:layout_alignStart="@+id/regPassword"
-        android:textColorHint="#ffffffff" />
+        android:hint="Confirm Password"
+        android:layout_marginBottom="42dp"
+        android:layout_above="@+id/regSubmitInfo"
+        android:layout_alignRight="@+id/regPassword"
+        android:layout_alignEnd="@+id/regPassword"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -88,32 +92,7 @@
         android:text="Submit Information"
         android:id="@+id/regSubmitInfo"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="WELCOME"
-        android:id="@+id/regWelcomeTitle"
-        android:textStyle="italic"
-        android:autoLink="none"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Penguin Carpool"
-        android:id="@+id/regWelcomeTitle2"
-        android:textStyle="bold|italic"
-        android:autoLink="none"
-        android:textSize="40dp"
-        android:gravity="center"
-        android:layout_below="@+id/regWelcomeTitle"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        />
 
 </RelativeLayout>

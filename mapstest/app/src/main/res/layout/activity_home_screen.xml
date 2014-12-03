@@ -9,11 +9,17 @@
     tools:context="com.example.mykolasomov.mapstest.HomeScreen"
     android:id="@+id/layoutHomeScreen"
     android:background="@drawable/home_screen_bg">
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="175dp"
+        android:editable="false"
+        android:id="@+id/my_edit"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Schedule Taxi"
+        android:text="Schedule Name"
         android:id="@+id/scheduleTaxi"
         android:layout_marginTop="210dp"
         android:layout_alignParentTop="true"
@@ -56,14 +62,11 @@
          />
 
     <Button
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Confirm Taxi Scan"
+        android:text="Are you sure?"
         android:id="@+id/confirmscan1"
-        android:layout_above="@+id/viewIdleScreen"
-        android:layout_alignRight="@+id/viewIdleScreen"
-        android:layout_alignEnd="@+id/viewIdleScreen"
-        android:layout_alignLeft="@+id/viewIdleScreen"
-        android:layout_alignStart="@+id/viewIdleScreen" />
+        android:layout_above="@+id/viesProfile"
+        android:layout_alignRight="@+id/orderTaxi"
+        android:layout_alignEnd="@+id/orderTaxi" />
 </RelativeLayout>

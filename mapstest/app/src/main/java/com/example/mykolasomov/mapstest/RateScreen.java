@@ -64,7 +64,7 @@ public class RateScreen extends LoginScreen{
 //            HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/save");
             //Post Data
             List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
-            nameValuePair.add(new BasicNameValuePair("User_ID", Integer.toString(id)));
+            nameValuePair.add(new BasicNameValuePair("taxi_id", Integer.toString(IdleScreen.qrVal2)));
             nameValuePair.add(new BasicNameValuePair("rate", ratingSubmit));
 //            Log.d("Rate",String.valueOf(rating));
             //Encoding POST data

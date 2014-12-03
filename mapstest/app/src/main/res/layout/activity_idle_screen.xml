@@ -27,19 +27,9 @@
         android:textStyle="bold|italic"
         android:autoLink="none"
         android:textSize="80dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="193dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="15:32"
-        android:id="@+id/idleViewElapsedTime"
-        android:textSize="50dp"
-        android:layout_below="@+id/idleViewEstimate"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
 
     <Button
         android:layout_width="150dp"
@@ -78,6 +68,15 @@
         android:text="Are you sure?"
         android:id="@+id/confirmscan"
         android:layout_above="@+id/idleRoute"
+        android:layout_centerHorizontal="true" />
+    <Chronometer
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="15:32"
+        android:id="@+id/chronometer"
+        android:textSize="50dp"
+        android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

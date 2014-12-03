@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -30,13 +32,30 @@ import java.util.List;
 
 public class IdleScreen extends com.example.mykolasomov.mapstest.LoginScreen {
     public static int qrVal2;
+    static long startTime = 0;
+    static long finalTime = 0;
+    static long elapsedTime = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_idle_screen);
         findViewById(R.id.idleScan).setOnClickListener(this);
         findViewById(R.id.confirmscan).setOnClickListener(this);
+        if (startTime == 0) {
+            startTime = SystemClock.elapsedRealtime();
+            ((Chronometer) findViewById(R.id.chronometer)).start();
+        }
+        else{
+            ((Chronometer) findViewById(R.id.chronometer)).setBase(SystemClock.elapsedRealtime()- (SystemClock.elapsedRealtime() - startTime));
+            ((Chronometer) findViewById(R.id.chronometer)).start();
+        }
 
+    }
+
+
+    public void onDestroy(){
+        finalTime = (((Chronometer) findViewById(R.id.chronometer)).getBase() - SystemClock.elapsedRealtime())/1000;
+        super.onDestroy();
     }
 
 
@@ -97,7 +116,7 @@ public class IdleScreen extends com.example.mykolasomov.mapstest.LoginScreen {
             HttpPost httpPost = new HttpPost("http://172.17.81.172/penguin-carpool/public/updateState");
            // HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/updateState");
             //Post Data
-            List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(5);
+            List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(4);
             nameValuePair.add(new BasicNameValuePair("id", Integer.toString(qrVal2)));
 //            nameValuePair.add(new BasicNameValuePair("Taxi_loc", "thode test qr scan"));
             nameValuePair.add(new BasicNameValuePair("Active_State", Integer.toString(0)));

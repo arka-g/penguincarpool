@@ -134,7 +134,7 @@ public class IdleScreen extends com.example.mykolasomov.mapstest.LoginScreen {
             //making POST request.
             try {
                 HttpResponse response = httpClient.execute(httpPost);
-                startActivity(new Intent(IdleScreen.this, HomeScreen.class));
+                startActivity(new Intent(IdleScreen.this, RateScreen.class));
 
                 // write response to log
                 Log.d("Http Post Response:", response.toString());

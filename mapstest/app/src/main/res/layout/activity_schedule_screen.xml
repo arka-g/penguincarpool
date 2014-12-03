@@ -21,7 +21,7 @@
         android:ems="10"
         android:id="@+id/schedDate"
         android:layout_marginTop="27dp"
-        android:hint="date"
+        android:hint="date (2014-xx-yy)"
         android:layout_below="@+id/schedWelcome"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -35,7 +35,7 @@
         android:layout_alignBottom="@+id/schedDate"
         android:layout_toRightOf="@+id/schedDate"
         android:layout_toEndOf="@+id/schedDate"
-        android:hint="time" />
+        android:hint="time (04:03:15)" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -73,6 +73,17 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:hint="dropoff location" />
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:minLines="15"
+        android:maxLines="15"
+        android:textSize="12sp"
+        android:editable="false"
+        android:id="@+id/my_edit"
+        android:layout_above="@+id/schedSubmitInfo"
+        android:layout_alignRight="@+id/schedTime"
+        android:layout_alignEnd="@+id/schedTime" />
 
     <Button
         android:layout_width="wrap_content"

@@ -106,7 +106,7 @@ public class LoginScreen extends Activity implements View.OnClickListener {
 
             //HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-            HttpPost httpPost = new HttpPost("http://192.168.0.16/penguin-carpool/public/login");
+            HttpPost httpPost = new HttpPost("http://172.17.81.172/penguin-carpool/public/login");
             //HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/login");
             //Post Data
             List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
@@ -125,7 +125,7 @@ public class LoginScreen extends Activity implements View.OnClickListener {
             try {
                 HttpResponse response = httpClient.execute(httpPost);
                 // write response to log
-                Log.d("Http Post Response:", response.toString());
+                Log.d("Http Post repsonse IM ALIVE:", response.toString());
 //                Log.d("Http Post Response:", nameValuePair.toString());
 
             } catch (ClientProtocolException e) {
@@ -137,38 +137,31 @@ public class LoginScreen extends Activity implements View.OnClickListener {
                 Log.d("IO Exception", e.toString());
                 e.printStackTrace();
             }
-            //verify login
             HttpContext localContext = new BasicHttpContext();
-            HttpGet httpGet = new HttpGet("http://192.168.0.16/penguin-carpool/public/login");
+//            HttpGet httpGet = new HttpGet("http://10.0.2.2/penguin-carpool/public/login");
             //for phone
-//            HttpGet httpGet = new HttpGet("http://172.17.31.169/penguin-carpool/public/login");
-
+            HttpGet httpGet = new HttpGet("http://172.17.81.172/penguin-carpool/public/login");
             String text = null;
+
             try {
                 HttpResponse response1 = httpClient.execute(httpGet, localContext);
                 HttpEntity entity = response1.getEntity();
                 text = getASCIIContentFromEntity(entity);
-                // Uncomment below and comment login if statement to bypass user authentication
-                //startActivity(new Intent(LoginScreen.this, HomeScreen.class));
 
                 JSONObject text_obj = new JSONObject(text);
                 String status = text_obj.getString("status");
                 firstname = text_obj.getString("0");
                 lastname = text_obj.getString("1");
                 email = text_obj.getString("2");
-                message = text_obj.getString("4");
                 id = text_obj.getInt("3");
                 Log.d("ID",Integer.toString(id));
                 //transition to home screen if credentials are valid
-                //if (status.equals("200")) {
+                if (status.equals("200")) {
                     startActivity(new Intent(LoginScreen.this, HomeScreen.class));
-               // }
-                //else {
-                    // Display failed login
-                //    Toast toast = Toast.makeText(LoginScreen.this, "Login Unsuccessful", Toast.LENGTH_LONG);
-                    //toast.setGravity(Gravity.TOP, 25, 400);
-                //    toast.show();
-                //}
+                }
+                else {
+                    //login error popup?
+                }
                 return text;
 
             } catch (Exception e) {

@@ -7,6 +7,7 @@
     <uses-sdk android:minSdkVersion="13"/>
 
     <application
+
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -24,6 +25,7 @@
             android:configChanges="keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
+
             <!-- configChanges and screenOrientation restrict application to "portrait" mode for THIS activity. Copy for all activities. -->
             <!-- <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,6 +41,10 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity
             android:name=".ProfileScreen"
@@ -72,7 +78,7 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAQdI357X2JBD5maZbMliAUHcznXp4M-1g" />
+            android:value="AIzaSyAtr03GYE0O6fpBMaRc3UszSNXR-JuNUvw" />
 
 
     </application>
@@ -82,6 +88,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but are recommended.

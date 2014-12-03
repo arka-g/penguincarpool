@@ -42,13 +42,13 @@ import java.util.List;
 public class JoinScreen extends com.example.mykolasomov.mapstest.LoginScreen {
 
 
-    /*@Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join_screen);
         findViewById(R.id.rand_btn).setOnClickListener(this);
     }
-
+/*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -89,7 +89,7 @@ public class JoinScreen extends com.example.mykolasomov.mapstest.LoginScreen {
         protected String doInBackground(Void... params) {
             HttpContext localContext = new BasicHttpContext();
             //get available taxis
-            HttpGet httpGet = new HttpGet("http://192.168.0.16/penguin-carpool/public/carpool");
+            HttpGet httpGet = new HttpGet("http://172.17.81.172/penguin-carpool/public/carpool");
             String text = null;
             try {
                 HttpResponse response2 = httpClient.execute(httpGet, localContext);
@@ -145,12 +145,15 @@ public class JoinScreen extends com.example.mykolasomov.mapstest.LoginScreen {
                     StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
                     StrictMode.setThreadPolicy(policy);
-                    HttpPost httpPost = new HttpPost("http://192.168.0.16/penguin-carpool/public/messagePost");
+                    HttpPost httpPost = new HttpPost("http://172.17.81.172/penguin-carpool/public/messagePost");
                     //Post Data
-                    List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(1);
-                    nameValuePair.add(new BasicNameValuePair("Type_Message" +
-                            "", textview.getText().toString()));
-                    Log.d("first", "im alive");
+                    List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
+                    nameValuePair.add(new BasicNameValuePair("Type_Message", textview.getText().toString()));
+                    nameValuePair.add(new BasicNameValuePair("User_ID", Integer.toString(JoinScreen.id)));
+
+                    Log.d("first", textview.getText().toString());
+                    Log.d("first id",Integer.toString(JoinScreen.id));
+
 
                     //Encoding POST data
                     try {

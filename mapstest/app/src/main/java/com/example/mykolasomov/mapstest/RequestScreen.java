@@ -62,7 +62,7 @@ public class RequestScreen extends LoginScreen implements View.OnClickListener {
 
             //HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-            HttpPost httpPost = new HttpPost("http://192.168.0.16/penguin-carpool/public/neworder");
+            HttpPost httpPost = new HttpPost("http://172.17.81.172/penguin-carpool/public/neworder");
 //for phone:
 //            HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/neworder");
 
@@ -120,7 +120,7 @@ public class RequestScreen extends LoginScreen implements View.OnClickListener {
 
             //HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-            HttpPost httpPost = new HttpPost("http://192.168.0.16/penguin-carpool/public/neworder");
+            HttpPost httpPost = new HttpPost("http://172.17.81.172/penguin-carpool/public/neworder");
             //for phone:
 //            HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/neworder");
             //Post Data
@@ -141,6 +141,8 @@ public class RequestScreen extends LoginScreen implements View.OnClickListener {
             //making POST request.
             try {
                 HttpResponse response = httpClient.execute(httpPost);
+                Log.d("YOU CLICKED ME", response.toString());
+
                 startActivity(new Intent(RequestScreen.this, JoinScreen.class));
                 // write response to log
                 Log.d("Http Post Response:", response.toString());
@@ -153,6 +155,7 @@ public class RequestScreen extends LoginScreen implements View.OnClickListener {
                 Log.d("IO Exception", e.toString());
                 e.printStackTrace();
             }
+
 
             return str_dec;
         }

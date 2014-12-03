@@ -1,10 +1,12 @@
 package com.example.mykolasomov.mapstest;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 
 import android.location.Geocoder;
 
+import android.os.StrictMode;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -19,14 +21,31 @@ import android.content.Context;
 import  	android.location.Address;
 
 import android.util.Log;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
+import org.json.JSONObject;
 import org.w3c.dom.Document;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import com.google.android.gms.maps.model.*;
 
 
-
+import java.util.List;
 import java.util.Locale;
 
 
@@ -46,9 +65,11 @@ public class MapsActivity extends FragmentActivity {
     private Document document2;
     private GMapV2Direction v2GetRouteDirection;
     private GMapV2Direction v2GetRouteDirection2;
-    private LatLng fromPosition;
-    private LatLng toPosition;
-    private LatLng detour;
+    public LatLng fromPosition;
+    public LatLng toPosition;
+    public LatLng detour;
+    public String loc = "1280 main street west hamilton";
+    public String dest = "32 broadway avenue hamilton";
     private GoogleMap mGoogleMap;
     private MarkerOptions markerOptions;
 
@@ -57,60 +78,128 @@ public class MapsActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        v2GetRouteDirection = new GMapV2Direction();
-        v2GetRouteDirection2 = new GMapV2Direction();
-        SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mGoogleMap = supportMapFragment.getMap();
-
-        // Enabling MyLocation in Google Map
-
-        mGoogleMap.getUiSettings().setZoomControlsEnabled(true);
-        mGoogleMap.getUiSettings().setCompassEnabled(true);
-        mGoogleMap.getUiSettings().setMyLocationButtonEnabled(true);
-        mGoogleMap.getUiSettings().setAllGesturesEnabled(true);
-        mGoogleMap.setTrafficEnabled(true);
-        mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(12));
-        markerOptions = new MarkerOptions();
-        fromPosition = drawPoint("1280 main street west hamilton ontario");
-        toPosition = drawPoint("1000 main street east hamilton ontario");
-        detour = null;
-        //detour = drawPoint("40 wilson street hamilton ontario");
-
-        mGoogleMap.setMyLocationEnabled(true);
-        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(fromPosition, 10));
+//        v2GetRouteDirection = new GMapV2Direction();
+//        v2GetRouteDirection2 = new GMapV2Direction();
+//        SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager()
+//                .findFragmentById(R.id.map);
+//        mGoogleMap = supportMapFragment.getMap();
+//
+//        // Enabling MyLocation in Google Map
+//
+//        mGoogleMap.getUiSettings().setZoomControlsEnabled(true);
+//        mGoogleMap.getUiSettings().setCompassEnabled(true);
+//        mGoogleMap.getUiSettings().setMyLocationButtonEnabled(true);
+//        mGoogleMap.getUiSettings().setAllGesturesEnabled(true);
+//        mGoogleMap.setTrafficEnabled(true);
+//        mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(12));
+//        markerOptions = new MarkerOptions();
+//
+//        fromPosition = drawPoint(loc);
+//        toPosition = drawPoint(dest);
+          //detour = null;
+//        //detour = drawPoint("40 wilson street hamilton ontario");
+//
+//        mGoogleMap.setMyLocationEnabled(true);
+        //mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(fromPosition, 10));
         GetRouteTask getRoute = new GetRouteTask();
         getRoute.execute();
     }
 
     private class GetRouteTask extends AsyncTask<String, Void, String> {
+
         private ProgressDialog Dialog;
         String response = "";
         @Override
         protected void onPreExecute() {
+            v2GetRouteDirection = new GMapV2Direction();
+            v2GetRouteDirection2 = new GMapV2Direction();
+            SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.map);
+            mGoogleMap = supportMapFragment.getMap();
+
+            // Enabling MyLocation in Google Map
+
+            mGoogleMap.getUiSettings().setZoomControlsEnabled(true);
+            mGoogleMap.getUiSettings().setCompassEnabled(true);
+            mGoogleMap.getUiSettings().setMyLocationButtonEnabled(true);
+            mGoogleMap.getUiSettings().setAllGesturesEnabled(true);
+            mGoogleMap.setTrafficEnabled(true);
+            mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(12));
+            markerOptions = new MarkerOptions();
+
+            fromPosition = drawPoint(loc);
+            toPosition = drawPoint(dest);
+            detour = null;
+            //detour = drawPoint("40 wilson street hamilton ontario");
+
+            mGoogleMap.setMyLocationEnabled(true);
+            mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(fromPosition, 10));
+
             Dialog = new ProgressDialog(MapsActivity.this);
             Dialog.setMessage("Loading route...");
             Dialog.show();
-        }
 
+        }
+        protected String getASCIIContentFromEntity(HttpEntity entity) throws IllegalStateException, IOException {
+            InputStream in = entity.getContent();
+
+            StringBuffer out = new StringBuffer();
+            int n = 1;
+            while (n > 0) {
+                byte[] b = new byte[4096];
+                n = in.read(b);
+                if (n > 0) out.append(new String(b, 0, n));
+            }
+            return out.toString();
+        }
         @Override
         protected String doInBackground(String... urls) {
-            //Get All Route values
-            if (detour !=null) {
-                document = v2GetRouteDirection.getDocument(fromPosition, detour, GMapV2Direction.MODE_DRIVING);
-                document2 = v2GetRouteDirection2.getDocument(detour, toPosition, GMapV2Direction.MODE_DRIVING);
+            //let it go on main thread
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+
+            HttpClient httpClient = new DefaultHttpClient();
+            HttpContext localContext = new BasicHttpContext();
+//            HttpGet httpGet = new HttpGet("http://10.0.2.2/penguin-carpool/public/login");
+            //for phone
+            HttpGet httpGet = new HttpGet("http://172.17.81.172/penguin-carpool/public/gmaps");
+            String text = null;
+
+            try {
+                HttpResponse response1 = httpClient.execute(httpGet, localContext);
+                HttpEntity entity = response1.getEntity();
+                text = getASCIIContentFromEntity(entity);
+//
+                JSONObject text_obj = new JSONObject(text);
+                loc = text_obj.getString("Location");
+                dest = text_obj.getString("Destination");
+                Log.d("location", loc);
+                Log.d("Destination", dest);
+//                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//                StrictMode.setThreadPolicy(policy);
+//                markerOptions = new MarkerOptions();
+//                fromPosition = drawPoint(loc);
+//                toPosition = drawPoint(dest);
+
+
+                if (detour != null) {
+                    document = v2GetRouteDirection.getDocument(fromPosition, detour, GMapV2Direction.MODE_DRIVING);
+                    document2 = v2GetRouteDirection2.getDocument(detour, toPosition, GMapV2Direction.MODE_DRIVING);
+                } else {
+                    document = v2GetRouteDirection.getDocument(fromPosition, toPosition, GMapV2Direction.MODE_DRIVING);
+                }
+                return response = "Success";
+
+            } catch (Exception e) {
+                return e.getLocalizedMessage();
             }
-            else
-                document = v2GetRouteDirection.getDocument(fromPosition, toPosition, GMapV2Direction.MODE_DRIVING);
-
-
-            response = "Success";
-            return response;
-
         }
+
+
 
         @Override
         protected void onPostExecute(String result) {
+
             mGoogleMap.clear();
             if(response.equalsIgnoreCase("Success")){
                 if (detour == null)

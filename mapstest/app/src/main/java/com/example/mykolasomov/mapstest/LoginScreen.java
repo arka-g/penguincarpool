@@ -106,7 +106,7 @@ public class LoginScreen extends Activity implements View.OnClickListener {
 
             //HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-            HttpPost httpPost = new HttpPost("http://172.17.81.172/penguin-carpool/public/login");
+            HttpPost httpPost = new HttpPost("http://192.168.1.118/penguin-carpool/public/login");
             //HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/login");
             //Post Data
             List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
@@ -140,7 +140,7 @@ public class LoginScreen extends Activity implements View.OnClickListener {
             HttpContext localContext = new BasicHttpContext();
 //            HttpGet httpGet = new HttpGet("http://10.0.2.2/penguin-carpool/public/login");
             //for phone
-            HttpGet httpGet = new HttpGet("http://172.17.81.172/penguin-carpool/public/login");
+            HttpGet httpGet = new HttpGet("http://192.168.1.118/penguin-carpool/public/login");
             String text = null;
 
             try {
@@ -154,6 +154,7 @@ public class LoginScreen extends Activity implements View.OnClickListener {
                 lastname = text_obj.getString("1");
                 email = text_obj.getString("2");
                 id = text_obj.getInt("3");
+                message = text_obj.getString("4");
                 Log.d("ID",Integer.toString(id));
                 //transition to home screen if credentials are valid
                 if (status.equals("200")) {

@@ -29,12 +29,14 @@ import java.util.List;
 
 
 public class IdleScreen extends com.example.mykolasomov.mapstest.LoginScreen {
-    public static int qrVal;
+    public static int qrVal2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_idle_screen);
         findViewById(R.id.idleScan).setOnClickListener(this);
+        findViewById(R.id.confirmscan).setOnClickListener(this);
+
     }
 
 
@@ -66,20 +68,29 @@ public class IdleScreen extends com.example.mykolasomov.mapstest.LoginScreen {
     public void onClick(View arg0) {
         Button scan = (Button) findViewById(R.id.idleScan);
         scan.setClickable(false);
-        //execute get and post
-        Intent intent = new Intent("com.google.zxing.client.android.SCAN");
-        intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
-        startActivityForResult(intent, 0);
+        Button scan_confirm = (Button) findViewById(R.id.confirmscan);
+        scan_confirm.setClickable(true);
 
-        new QRPost().execute();
+        if (arg0.equals(scan_confirm)) {
+            //execute get and post
+            new QRPost2().execute();
+
+        }
+        else if (arg0.equals(scan)){
+            //execute get and post
+            Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+            intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+            startActivityForResult(intent, 0);
+        }
+
     }
 
 
-    private class QRPost extends AsyncTask<Void, Void, String> {
+    private class QRPost2 extends AsyncTask<Void, Void, String> {
         @Override
 
         protected String doInBackground(Void... params) {
-            Log.d("im here",Integer.toString(qrVal));
+            Log.d("im here",Integer.toString(qrVal2));
 
            // HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
@@ -87,10 +98,10 @@ public class IdleScreen extends com.example.mykolasomov.mapstest.LoginScreen {
            // HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/updateState");
             //Post Data
             List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(5);
-            nameValuePair.add(new BasicNameValuePair("id", Integer.toString(qrVal)));
-            nameValuePair.add(new BasicNameValuePair("Taxi_loc", "thode test qr scan"));
-            nameValuePair.add(new BasicNameValuePair("Active_State", Integer.toString(1)));
-            nameValuePair.add(new BasicNameValuePair("Carpool", Integer.toString(1)));
+            nameValuePair.add(new BasicNameValuePair("id", Integer.toString(qrVal2)));
+//            nameValuePair.add(new BasicNameValuePair("Taxi_loc", "thode test qr scan"));
+            nameValuePair.add(new BasicNameValuePair("Active_State", Integer.toString(0)));
+            nameValuePair.add(new BasicNameValuePair("Carpool", Integer.toString(0)));
             nameValuePair.add(new BasicNameValuePair("User_id", Integer.toString(id)));
 
             //Encoding POST data
@@ -104,6 +115,8 @@ public class IdleScreen extends com.example.mykolasomov.mapstest.LoginScreen {
             //making POST request.
             try {
                 HttpResponse response = httpClient.execute(httpPost);
+                startActivity(new Intent(IdleScreen.this, HomeScreen.class));
+
                 // write response to log
                 Log.d("Http Post Response:", response.toString());
             } catch (ClientProtocolException e) {
@@ -116,11 +129,11 @@ public class IdleScreen extends com.example.mykolasomov.mapstest.LoginScreen {
                 e.printStackTrace();
             }
             //this is useless
-            Log.d("integer returned",Integer.toString(qrVal));
-            return Integer.toString(qrVal);
+            Log.d("integer returned",Integer.toString(qrVal2));
+            return Integer.toString(qrVal2);
         }
         protected void onPostExecute(String results) {
-            Button scan = (Button) findViewById(R.id.idleScan);
+            Button scan = (Button) findViewById(R.id.confirmscan);
             scan.setClickable(true);
         }
 }
@@ -128,12 +141,13 @@ public class IdleScreen extends com.example.mykolasomov.mapstest.LoginScreen {
         if (requestCode == 0) {
             if (resultCode == RESULT_OK) {
                 String contents = intent.getStringExtra("SCAN_RESULT");
-                qrVal = Integer.parseInt(contents);
+                qrVal2 = Integer.parseInt(contents);
                 String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 // Handle successful scan
                 Toast toast = Toast.makeText(this, "Content:" + contents + " Format:" + format , Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.TOP, 25, 400);
                 toast.show();
+
             } else if (resultCode == RESULT_CANCELED) {
                 // Handle cancel
                 Toast toast = Toast.makeText(this, "Scan was Cancelled!", Toast.LENGTH_LONG);

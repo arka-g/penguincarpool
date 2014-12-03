@@ -59,5 +59,14 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:onClick="launchIdleScreen" />
+         />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Are you sure?"
+        android:id="@+id/confirmscan1"
+        android:layout_above="@+id/viesProfile"
+        android:layout_alignRight="@+id/orderTaxi"
+        android:layout_alignEnd="@+id/orderTaxi" />
 </RelativeLayout>

@@ -29,6 +29,7 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <!-- configChanges and screenOrientation restrict application to "portrait" mode for THIS activity. Copy for all activities. -->
             <!-- <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,6 +41,7 @@
             android:name=".HomeScreen"
             android:configChanges="keyboardHidden|screenSize"
             android:screenOrientation="portrait" >
+
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->

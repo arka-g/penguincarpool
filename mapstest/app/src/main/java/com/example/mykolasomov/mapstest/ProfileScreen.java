@@ -22,14 +22,14 @@ public class ProfileScreen extends LoginScreen {
         TextView textView1 = (TextView) findViewById(R.id.userLastName);
         TextView textView2 = (TextView) findViewById(R.id.userEmail);
         TextView textView3 = (TextView) findViewById(R.id.userMessage);
-        RatingBar rating = (RatingBar) findViewById(R.id.userRatingAve);
+        RatingBar ratinguser = (RatingBar) findViewById(R.id.userRatingAve);
 
         textView.setText(firstname);
         textView1.setText(lastname);
         textView2.setText(email);
         textView3.setText(message);
         //hack for now. come back to it and add a real rating system
-        rating.setRating(id);
+        ratinguser.setRating(rating);
     }
 
     /*@Override

@@ -76,6 +76,7 @@
             android:name=".RateScreen"
             android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|screenSize" >
+
         </activity>
         <activity android:name=".JoinScreen" />
 

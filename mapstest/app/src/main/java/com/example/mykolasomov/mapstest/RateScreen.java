@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -39,9 +38,7 @@ public class RateScreen extends LoginScreen{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate_screen);
         findViewById(R.id.submitRating).setOnClickListener(this);
-        RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-        ratingBar.setRating(rating);
-//        findViewById(R.id.ratingBar).seto
+        findViewById(R.id.ratingBar).setOnClickListener(this);
     }
 
     public void onClick(View arg0) {
@@ -56,17 +53,17 @@ public class RateScreen extends LoginScreen{
         @Override
 
         protected String doInBackground(Void... params) {
-            EditText textrating = (EditText) findViewById(R.id.textrating);
-            String ratingSubmit = textrating.getText().toString();
+
+            RatingBar rating = (RatingBar) findViewById(R.id.userRatingAve);
 
             // replace with your url
-            HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/rate");
+            HttpPost httpPost = new HttpPost("http://192.168.1.118/penguin-carpool/public/rate");
 //            HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/save");
             //Post Data
             List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
             nameValuePair.add(new BasicNameValuePair("User_ID", Integer.toString(id)));
-            nameValuePair.add(new BasicNameValuePair("rate", ratingSubmit));
-//            Log.d("Rate",String.valueOf(rating));
+            nameValuePair.add(new BasicNameValuePair("rate", String.valueOf(rating)));
+            Log.d("Rate",String.valueOf(rating));
             //Encoding POST data
             try {
                 httpPost.setEntity(new UrlEncodedFormEntity(nameValuePair));
@@ -80,6 +77,11 @@ public class RateScreen extends LoginScreen{
                 HttpResponse response = httpClient.execute(httpPost);
                 // write response to log
                 Log.d("Http Post Response:", response.toString());
+                // Display successful rate
+                Toast toast = Toast.makeText(RateScreen.this, "Thanks for rating!", Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.TOP, 25, 400);
+                toast.show();
+
                 // Return to LoginScreen
                 startActivity(new Intent(RateScreen.this, HomeScreen.class));
             } catch (ClientProtocolException e) {

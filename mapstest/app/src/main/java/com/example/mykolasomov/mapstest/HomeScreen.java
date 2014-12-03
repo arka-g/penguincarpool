@@ -1,16 +1,12 @@
 package com.example.mykolasomov.mapstest;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
@@ -35,8 +31,8 @@ public class HomeScreen extends LoginScreen {
         setContentView(R.layout.activity_home_screen);
         findViewById(R.id.viewIdleScreen).setOnClickListener(this);
         findViewById(R.id.confirmscan1).setOnClickListener(this);
-        EditText et = (EditText) findViewById(R.id.my_edit);
-        et.setText("You are logged in!");
+        /*EditText et = (EditText) findViewById(R.id.my_edit);
+        et.setText("You are logged in!");*/
     }
 
 
@@ -105,7 +101,7 @@ public class HomeScreen extends LoginScreen {
 
             // HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-            HttpPost httpPost = new HttpPost("http://10.0.2.2/penguin-carpool/public/updateState");
+            HttpPost httpPost = new HttpPost("http://192.168.1.118/penguin-carpool/public/updateState");
             // HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/updateState");
             //Post Data
             List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(5);

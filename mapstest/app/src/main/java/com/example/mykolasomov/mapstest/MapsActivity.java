@@ -68,8 +68,8 @@ public class MapsActivity extends FragmentActivity {
     public LatLng fromPosition;
     public LatLng toPosition;
     public LatLng detour;
-    public String loc = "1280 main street west hamilton";
-    public String dest = "32 broadway avenue hamilton";
+    public String loc = RequestScreen.str_loc;
+    public String dest = RequestScreen.str_dec;
     private GoogleMap mGoogleMap;
     private MarkerOptions markerOptions;
 
@@ -78,29 +78,29 @@ public class MapsActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-//        v2GetRouteDirection = new GMapV2Direction();
-//        v2GetRouteDirection2 = new GMapV2Direction();
-//        SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager()
-//                .findFragmentById(R.id.map);
-//        mGoogleMap = supportMapFragment.getMap();
-//
-//        // Enabling MyLocation in Google Map
-//
-//        mGoogleMap.getUiSettings().setZoomControlsEnabled(true);
-//        mGoogleMap.getUiSettings().setCompassEnabled(true);
-//        mGoogleMap.getUiSettings().setMyLocationButtonEnabled(true);
-//        mGoogleMap.getUiSettings().setAllGesturesEnabled(true);
-//        mGoogleMap.setTrafficEnabled(true);
-//        mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(12));
-//        markerOptions = new MarkerOptions();
-//
-//        fromPosition = drawPoint(loc);
-//        toPosition = drawPoint(dest);
-          //detour = null;
-//        //detour = drawPoint("40 wilson street hamilton ontario");
-//
-//        mGoogleMap.setMyLocationEnabled(true);
-        //mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(fromPosition, 10));
+        v2GetRouteDirection = new GMapV2Direction();
+        v2GetRouteDirection2 = new GMapV2Direction();
+        SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mGoogleMap = supportMapFragment.getMap();
+
+        // Enabling MyLocation in Google Map
+
+        mGoogleMap.getUiSettings().setZoomControlsEnabled(true);
+        mGoogleMap.getUiSettings().setCompassEnabled(true);
+        mGoogleMap.getUiSettings().setMyLocationButtonEnabled(true);
+        mGoogleMap.getUiSettings().setAllGesturesEnabled(true);
+        mGoogleMap.setTrafficEnabled(true);
+        mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(12));
+        markerOptions = new MarkerOptions();
+
+        fromPosition = drawPoint(loc);
+        toPosition = drawPoint(dest);
+         detour = null;
+        //detour = drawPoint("40 wilson street hamilton ontario");
+
+        mGoogleMap.setMyLocationEnabled(true);
+        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(fromPosition, 10));
         GetRouteTask getRoute = new GetRouteTask();
         getRoute.execute();
     }
@@ -111,76 +111,52 @@ public class MapsActivity extends FragmentActivity {
         String response = "";
         @Override
         protected void onPreExecute() {
-            v2GetRouteDirection = new GMapV2Direction();
-            v2GetRouteDirection2 = new GMapV2Direction();
-            SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager()
-                    .findFragmentById(R.id.map);
-            mGoogleMap = supportMapFragment.getMap();
-
-            // Enabling MyLocation in Google Map
-
-            mGoogleMap.getUiSettings().setZoomControlsEnabled(true);
-            mGoogleMap.getUiSettings().setCompassEnabled(true);
-            mGoogleMap.getUiSettings().setMyLocationButtonEnabled(true);
-            mGoogleMap.getUiSettings().setAllGesturesEnabled(true);
-            mGoogleMap.setTrafficEnabled(true);
-            mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(12));
-            markerOptions = new MarkerOptions();
-
-            fromPosition = drawPoint(loc);
-            toPosition = drawPoint(dest);
-            detour = null;
-            //detour = drawPoint("40 wilson street hamilton ontario");
-
-            mGoogleMap.setMyLocationEnabled(true);
-            mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(fromPosition, 10));
-
             Dialog = new ProgressDialog(MapsActivity.this);
             Dialog.setMessage("Loading route...");
             Dialog.show();
 
         }
-        protected String getASCIIContentFromEntity(HttpEntity entity) throws IllegalStateException, IOException {
-            InputStream in = entity.getContent();
-
-            StringBuffer out = new StringBuffer();
-            int n = 1;
-            while (n > 0) {
-                byte[] b = new byte[4096];
-                n = in.read(b);
-                if (n > 0) out.append(new String(b, 0, n));
-            }
-            return out.toString();
-        }
+//        protected String getASCIIContentFromEntity(HttpEntity entity) throws IllegalStateException, IOException {
+//            InputStream in = entity.getContent();
+//
+//            StringBuffer out = new StringBuffer();
+//            int n = 1;
+//            while (n > 0) {
+//                byte[] b = new byte[4096];
+//                n = in.read(b);
+//                if (n > 0) out.append(new String(b, 0, n));
+//            }
+//            return out.toString();
+//        }
         @Override
         protected String doInBackground(String... urls) {
-            //let it go on main thread
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
-
-            HttpClient httpClient = new DefaultHttpClient();
-            HttpContext localContext = new BasicHttpContext();
-//            HttpGet httpGet = new HttpGet("http://10.0.2.2/penguin-carpool/public/login");
-            //for phone
-            HttpGet httpGet = new HttpGet("http://172.17.81.172/penguin-carpool/public/gmaps");
-            String text = null;
-
-            try {
-                HttpResponse response1 = httpClient.execute(httpGet, localContext);
-                HttpEntity entity = response1.getEntity();
-                text = getASCIIContentFromEntity(entity);
+//            //let it go on main thread
+//            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//            StrictMode.setThreadPolicy(policy);
 //
-                JSONObject text_obj = new JSONObject(text);
-                loc = text_obj.getString("Location");
-                dest = text_obj.getString("Destination");
-                Log.d("location", loc);
-                Log.d("Destination", dest);
-//                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-//                StrictMode.setThreadPolicy(policy);
-//                markerOptions = new MarkerOptions();
-//                fromPosition = drawPoint(loc);
-//                toPosition = drawPoint(dest);
-
+//            HttpClient httpClient = new DefaultHttpClient();
+//            HttpContext localContext = new BasicHttpContext();
+////            HttpGet httpGet = new HttpGet("http://10.0.2.2/penguin-carpool/public/login");
+//            //for phone
+//            HttpGet httpGet = new HttpGet("http://172.17.81.172/penguin-carpool/public/gmaps");
+//            String text = null;
+//
+//            try {
+//                HttpResponse response1 = httpClient.execute(httpGet, localContext);
+//                HttpEntity entity = response1.getEntity();
+//                text = getASCIIContentFromEntity(entity);
+////
+//                JSONObject text_obj = new JSONObject(text);
+//                loc = text_obj.getString("Location");
+//                dest = text_obj.getString("Destination");
+//                Log.d("location", loc);
+//                Log.d("Destination", dest);
+////                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+////                StrictMode.setThreadPolicy(policy);
+////                markerOptions = new MarkerOptions();
+////                fromPosition = drawPoint(loc);
+////                toPosition = drawPoint(dest);
+//
 
                 if (detour != null) {
                     document = v2GetRouteDirection.getDocument(fromPosition, detour, GMapV2Direction.MODE_DRIVING);
@@ -190,9 +166,9 @@ public class MapsActivity extends FragmentActivity {
                 }
                 return response = "Success";
 
-            } catch (Exception e) {
-                return e.getLocalizedMessage();
-            }
+//            } catch (Exception e) {
+//                return e.getLocalizedMessage();
+//            }
         }
 
 

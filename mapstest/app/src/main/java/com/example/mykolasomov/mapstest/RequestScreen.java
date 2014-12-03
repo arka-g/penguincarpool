@@ -24,7 +24,8 @@ import java.util.List;
 
 
 public class RequestScreen extends LoginScreen implements View.OnClickListener {
-
+    public static String str_loc;
+    public static String str_dec;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +58,8 @@ public class RequestScreen extends LoginScreen implements View.OnClickListener {
             EditText user_location = (EditText) findViewById(R.id.reqPickup);
             EditText user_destination = (EditText) findViewById(R.id.reqDropoff);
 
-            String str_loc = user_location.getText().toString();
-            String str_dec = user_destination.getText().toString();
+            str_loc = user_location.getText().toString();
+            str_dec = user_destination.getText().toString();
 
             //HttpClient httpClient = new DefaultHttpClient();
             // replace with your url

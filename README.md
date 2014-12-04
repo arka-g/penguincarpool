@@ -3,7 +3,7 @@ Penguin Carpool
 
 ##SE 3A04 Final Project (McMaster University Software Architecture Course) 
 
-An excerpt from the project description can be found here: [Project Outline](http://puu.sh/dgTX6/4344ad3c77.png) </br>
+The project description can be found here: [Project Outline](https://drive.google.com/file/d/0BwWXFCnjmTYyd3lTekozVkhQajg/view?usp=sharing) </br>
 
 ##Tools Used: </br>
 Laravel - Backend PHP Framework to create a RESTful API</br>

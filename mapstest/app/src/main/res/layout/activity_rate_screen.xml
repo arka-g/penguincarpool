@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="RATE YOUR"
-        android:id="@+id/regWelcomeTitle"
+        android:id="@+id/regWelcomeTitleEdit"
         android:textStyle="italic"
         android:autoLink="none"
         android:textSize="30dp"
@@ -51,7 +51,7 @@
         android:autoLink="none"
         android:textSize="40dp"
         android:gravity="center"
-        android:layout_below="@+id/regWelcomeTitle"
+        android:layout_below="@+id/regWelcomeTitleEdit"
         android:layout_centerHorizontal="true" />
 
     <Button

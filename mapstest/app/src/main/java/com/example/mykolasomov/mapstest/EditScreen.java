@@ -1,6 +1,5 @@
 package com.example.mykolasomov.mapstest;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,6 +9,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
@@ -26,53 +26,47 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-//encryption
-//import android.util.Base64;
-//import org.apache.commons.codec.binary.Base64;
 
-
-public class RegisterScreen extends Activity implements View.OnClickListener {
+public class EditScreen extends LoginScreen {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_screen);
-        findViewById(R.id.regSubmitInfo).setOnClickListener(this);
+        setContentView(R.layout.activity_edit_screen);
+        findViewById(R.id.regSubmitInfoEdit).setOnClickListener(this);
+        TextView textView = (TextView) findViewById(R.id.regFirstNameEdit);
+        TextView textView1 = (TextView) findViewById(R.id.regLastNameEdit);
+        TextView textView2 = (TextView) findViewById(R.id.regEmailEdit);
+
+        textView.setText(firstname);
+        textView1.setText(lastname);
+        textView2.setText(email);
     }
-
-
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.register, menu);
-        return true;
-    }*/
-
     public void onClick(View arg0) {
-        Button b = (Button) findViewById(R.id.regSubmitInfo);
+        Button b = (Button) findViewById(R.id.regSubmitInfoEdit);
         b.setClickable(false);
         //execute get and post
-        new RegisterIO().execute();
+        new EditIO().execute();
     }
 
 
-    private class RegisterIO extends AsyncTask<Void, Void, String> {
+    private class EditIO extends AsyncTask<Void, Void, String> {
         @Override
 
         protected String doInBackground(Void... params) {
 
 
-            EditText first_name = (EditText) findViewById(R.id.regFirstName);
-            EditText last_name = (EditText) findViewById(R.id.regLastName);
-            EditText email = (EditText) findViewById(R.id.regEmail);
+            EditText first_name_edit = (EditText) findViewById(R.id.regFirstNameEdit);
+            EditText last_name_edit = (EditText) findViewById(R.id.regLastNameEdit);
+            EditText email_edit = (EditText) findViewById(R.id.regEmailEdit);
             //EditText username = (EditText) findViewById(R.id.username);
-            EditText password = (EditText) findViewById(R.id.regPassword);
+            EditText password_edit = (EditText) findViewById(R.id.regPasswordEdit);
 
-            String str1 = first_name.getText().toString();
-            String str2 = last_name.getText().toString();
-            String str3 = email.getText().toString();
+            String str1 = first_name_edit.getText().toString();
+            String str2 = last_name_edit.getText().toString();
+            String str3 = email_edit.getText().toString();
             //String str4 = username.getText().toString();
-            String str5 = password.getText().toString();
+            String str5 = password_edit.getText().toString();
 
             str1 = Base64.encodeToString(str1.getBytes(), Base64.DEFAULT);
             Log.e("YOLO", str1);
@@ -80,21 +74,19 @@ public class RegisterScreen extends Activity implements View.OnClickListener {
             Log.e("YOLO", str1);
 
 
-            //byte[] encodedBytes = Base64.encodeBase64(str1.getBytes());
-
-            HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-           HttpPost httpPost = new HttpPost("http://172.17.82.216/penguin-carpool/public/save");
+            HttpPost httpPost = new HttpPost("http://172.17.82.216/penguin-carpool/public/edit");
 //            HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/save");
             //Post Data
-            List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(4);
+            List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(5);
+            nameValuePair.add(new BasicNameValuePair("id", Integer.toString(id)));
             nameValuePair.add(new BasicNameValuePair("first_name", str1));
             nameValuePair.add(new BasicNameValuePair("last_name", str2));
             nameValuePair.add(new BasicNameValuePair("email", str3));
 //                nameValuePair.add(new BasicNameValuePair("username", str4));
             nameValuePair.add(new BasicNameValuePair("password", str5));
 
-
+            Log.d("id",Integer.toString(id));
             //Encoding POST data
             try {
                 httpPost.setEntity(new UrlEncodedFormEntity(nameValuePair));
@@ -122,29 +114,28 @@ public class RegisterScreen extends Activity implements View.OnClickListener {
         }
 
         protected void onPostExecute(String results) {
-            Button b = (Button) findViewById(R.id.regSubmitInfo);
+            Button b = (Button) findViewById(R.id.regSubmitInfoEdit);
             b.setClickable(true);
 
-            // Display sucessful registration
-            Toast toast = Toast.makeText(RegisterScreen.this, "You are now a penguin!", Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.TOP, 25, 400);
-            toast.show();
-
-            // Return to LoginScreen
-            startActivity(new Intent(RegisterScreen.this, LoginScreen.class));
         }
-
-
     }
-    /*@Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.edit_screen, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 }

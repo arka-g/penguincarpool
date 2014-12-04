@@ -213,6 +213,7 @@ public class MapsActivity extends FragmentActivity {
                     float distance = Float.parseFloat(v2GetRouteDirection.getDistanceText(document).split("\\s+")[0]);
                     data.putExtra("distance", distance);
                     data.putExtra("destination", dest);
+                    data.putExtra("totalD",distance);
 
                     setResult(RESULT_OK, data);
                 }
@@ -257,6 +258,7 @@ public class MapsActivity extends FragmentActivity {
                     Intent data = new Intent();
                     data.putExtra("distance", distance2);
                     data.putExtra("destination", dest);
+                    data.putExtra("totalD",totalD);
 
                     setResult(RESULT_OK, data);
                 }

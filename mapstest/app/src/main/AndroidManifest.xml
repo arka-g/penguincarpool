@@ -97,6 +97,10 @@
             android:name=".MessageScreen"
             android:label="@string/title_activity_message_screen" >
         </activity>
+        <activity
+            android:name=".EditScreen"
+            android:label="@string/title_activity_edit_screen" >
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

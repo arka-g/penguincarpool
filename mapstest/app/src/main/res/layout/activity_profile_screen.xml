@@ -90,8 +90,8 @@
         android:text="Delete Profile"
         android:id="@+id/deletebtn"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"/>
+        android:layout_alignLeft="@+id/userEmail"
+        android:layout_alignStart="@+id/userEmail" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -102,5 +102,16 @@
         android:layout_marginTop="40dp"
         android:layout_below="@+id/userRatingAve"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Profile"
+        android:id="@+id/editProfile"
+        android:onClick="goToEdit"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/userMessage"
+        android:layout_toEndOf="@+id/userMessage" />
 
 </RelativeLayout>

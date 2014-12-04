@@ -3,19 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    tools:context="com.example.mykolasomov.mapstest.RegisterScreen"
+    tools:context="com.example.mykolasomov.mapstest.EditScreen"
     android:background="@drawable/reg_screen_bg">
 
     <TextView
-        android:text="Please provide the following basic information so that we may add you to our databse."
+        android:text="Edit information below"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="5dp"
         android:paddingTop="5dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:id="@+id/regWelcome"
-        android:layout_below="@+id/regWelcomeTitle2"
+        android:id="@+id/regWelcomeEdit"
+        android:layout_below="@+id/regWelcomeTitle2Edit"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="24dp" />
@@ -25,10 +25,10 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/regFirstName"
+        android:id="@+id/regFirstNameEdit"
         android:layout_marginTop="33dp"
         android:hint="first name"
-        android:layout_below="@+id/regWelcome"
+        android:layout_below="@+id/regWelcomeEdit"
         android:layout_centerHorizontal="true"
         android:textColorHint="#ffffffff" />
 
@@ -37,11 +37,11 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/regLastName"
+        android:id="@+id/regLastNameEdit"
         android:hint="last name"
-        android:layout_below="@+id/regFirstName"
-        android:layout_alignLeft="@+id/regFirstName"
-        android:layout_alignStart="@+id/regFirstName"
+        android:layout_below="@+id/regFirstNameEdit"
+        android:layout_alignLeft="@+id/regFirstNameEdit"
+        android:layout_alignStart="@+id/regFirstNameEdit"
         android:textColorHint="#ffffffff" />
 
 
@@ -50,12 +50,12 @@
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
-        android:id="@+id/regEmail"
+        android:id="@+id/regEmailEdit"
         android:hint="example@email.com"
         android:layout_marginTop="50dp"
-        android:layout_below="@+id/regLastName"
-        android:layout_alignLeft="@+id/regLastName"
-        android:layout_alignStart="@+id/regLastName"
+        android:layout_below="@+id/regLastNameEdit"
+        android:layout_alignLeft="@+id/regLastNameEdit"
+        android:layout_alignStart="@+id/regLastNameEdit"
         android:textColorHint="#ffffffff" />
 
     <EditText
@@ -63,30 +63,18 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/regPassword"
-        android:hint="password"
-        android:layout_below="@+id/regEmail"
-        android:layout_alignLeft="@+id/regEmail"
-        android:layout_alignStart="@+id/regEmail"
-        android:textColorHint="#ffffffff" />
-
-    <EditText
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/regPasswordConf"
-        android:hint="confirm password"
-        android:layout_below="@+id/regPassword"
-        android:layout_alignLeft="@+id/regPassword"
-        android:layout_alignStart="@+id/regPassword"
+        android:id="@+id/regPasswordEdit"
+        android:hint="passwordEdit"
+        android:layout_below="@+id/regEmailEdit"
+        android:layout_alignLeft="@+id/regEmailEdit"
+        android:layout_alignStart="@+id/regEmailEdit"
         android:textColorHint="#ffffffff" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit Information"
-        android:id="@+id/regSubmitInfo"
+        android:id="@+id/regSubmitInfoEdit"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 

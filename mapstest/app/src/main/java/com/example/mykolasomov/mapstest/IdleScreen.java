@@ -39,6 +39,7 @@ public class IdleScreen extends com.example.mykolasomov.mapstest.LoginScreen {
     static long elapsedTime = 0;
     private float distance;
     private String destination;
+    public static float totalD = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +92,7 @@ public class IdleScreen extends com.example.mykolasomov.mapstest.LoginScreen {
     public void onClick(View arg0) {
         Button scan = (Button) findViewById(R.id.idleScan);
         scan.setClickable(false);
+        ((Chronometer) findViewById(R.id.chronometer)).stop();
         Button scan_confirm = (Button) findViewById(R.id.confirmscan);
         scan_confirm.setClickable(true);
 
@@ -195,6 +197,7 @@ public class IdleScreen extends com.example.mykolasomov.mapstest.LoginScreen {
 
                 tv = (TextView)findViewById(R.id.idleDestination);
                 tv.setText("Destination: " + destination);
+                totalD = intent.getFloatExtra("totalD",0);
             }
         }
     }

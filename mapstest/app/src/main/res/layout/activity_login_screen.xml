@@ -16,7 +16,8 @@
         android:hint="email"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:textColor="#ffffbc00" />
+        android:textColor="#ffffbc00"
+        android:text="test@test.ca"/>
 
     <EditText
         android:layout_width="300dp"
@@ -28,7 +29,9 @@
         android:layout_marginTop="23dp"
         android:layout_below="@+id/loginEmail"
         android:layout_centerHorizontal="true"
-        android:textColor="#ffffbc00" />
+        android:textColor="#ffffbc00"
+
+        android:text="test"/>
 
     <Button
         android:layout_width="200dp"

@@ -90,7 +90,7 @@ public class MapsActivity extends FragmentActivity {
         mGoogleMap.getUiSettings().setCompassEnabled(true);
         mGoogleMap.getUiSettings().setMyLocationButtonEnabled(true);
         mGoogleMap.getUiSettings().setAllGesturesEnabled(true);
-        mGoogleMap.setTrafficEnabled(true);
+        //mGoogleMap.setTrafficEnabled(true);
         mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(12));
         markerOptions = new MarkerOptions();
 
@@ -99,9 +99,9 @@ public class MapsActivity extends FragmentActivity {
 //         detour = null;
         //detour = drawPoint("40 wilson street hamilton ontario");
         if(JoinScreen.d!=null){;
-            detour = drawPoint(JoinScreen.d);
+            fromPosition = drawPoint(JoinScreen.d);
             toPosition = drawPoint(dest);
-            fromPosition = drawPoint(loc);
+            detour = drawPoint(loc);
         }
         else {
             fromPosition = drawPoint(loc);
@@ -208,6 +208,13 @@ public class MapsActivity extends FragmentActivity {
                     markerOptions.title("Destination");
                     markerOptions.snippet(v2GetRouteDirection.getDistanceText(document)+ "   " + v2GetRouteDirection.getDurationText(document));
                     mGoogleMap.addMarker(markerOptions);
+
+                    Intent data = new Intent();
+                    float distance = Float.parseFloat(v2GetRouteDirection.getDistanceText(document).split("\\s+")[0]);
+                    data.putExtra("distance", distance);
+                    data.putExtra("destination", dest);
+
+                    setResult(RESULT_OK, data);
                 }
                 else
                 {
@@ -243,6 +250,15 @@ public class MapsActivity extends FragmentActivity {
                     float time2 = Float.parseFloat(v2GetRouteDirection2.getDurationText(document2).split("\\s+")[0]);
                     markerOptions.snippet(String.valueOf(distance1+distance2) + " km  " + String.valueOf(time1+time2) + " mins");
                     mGoogleMap.addMarker(markerOptions);
+
+                    float totalD = distance1+distance2;
+
+                    //send back total distance
+                    Intent data = new Intent();
+                    data.putExtra("distance", distance2);
+                    data.putExtra("destination", dest);
+
+                    setResult(RESULT_OK, data);
                 }
             }
 

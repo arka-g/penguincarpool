@@ -19,11 +19,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="18.62$"
+        android:text="Please get estimate from map"
         android:id="@+id/idleViewEstimate"
         android:textStyle="bold|italic"
         android:autoLink="none"
-        android:textSize="80dp"
+        android:textSize="20dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
@@ -31,7 +31,7 @@
     <Button
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="View Route"
+        android:text="View Route and Get Estimate"
         android:id="@+id/idleRoute"
         android:onClick="launchMapScreen"
         android:layout_alignParentBottom="true"
@@ -52,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="1280 Main Street East, Hamilton, Ontario"
+        android:text=""
         android:id="@+id/idleDestination"
         android:textStyle="italic"
         android:layout_below="@+id/chronometer"

@@ -13,7 +13,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+import java.text.DecimalFormat;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -35,6 +37,8 @@ public class IdleScreen extends com.example.mykolasomov.mapstest.LoginScreen {
     static long startTime = 0;
     static long finalTime = 0;
     static long elapsedTime = 0;
+    private float distance;
+    private String destination;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,7 +117,7 @@ public class IdleScreen extends com.example.mykolasomov.mapstest.LoginScreen {
 
            // HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-            HttpPost httpPost = new HttpPost("http://172.17.87.146/penguin-carpool/public/updateState");
+            HttpPost httpPost = new HttpPost("http://172.17.82.216/penguin-carpool/public/updateState");
            // HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/updateState");
             //Post Data
             List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(4);
@@ -158,7 +162,7 @@ public class IdleScreen extends com.example.mykolasomov.mapstest.LoginScreen {
 }
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode == 0) {
-            if (resultCode == RESULT_OK) {
+            if (resultCode == RESULT_OK && intent.hasExtra("SCAN_RESULT")) {
                 String contents = intent.getStringExtra("SCAN_RESULT");
                 qrVal2 = Integer.parseInt(contents);
                 String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
@@ -174,10 +178,28 @@ public class IdleScreen extends com.example.mykolasomov.mapstest.LoginScreen {
                 toast.show();
 
             }
+
+
+        }
+
+        if (resultCode == RESULT_OK) {
+            if (intent.hasExtra("distance")) {
+                distance = intent.getFloatExtra("distance",0);
+                Log.e("distance",Float.toString(distance));
+                destination = intent.getStringExtra("destination");
+                Log.e("destination",destination);
+
+                TextView tv = (TextView)findViewById(R.id.idleViewEstimate);
+                tv.setText("$" + Float.toString(distance));
+                tv.setTextSize(80);
+
+                tv = (TextView)findViewById(R.id.idleDestination);
+                tv.setText("Destination: " + destination);
+            }
         }
     }
     // Launch MapScreen from IdleScreen
     public void launchMapScreen(View v){
-        startActivity(new Intent(IdleScreen.this, MapsActivity.class));
+        startActivityForResult(new Intent(IdleScreen.this, MapsActivity.class), 0);
     }
 }

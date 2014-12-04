@@ -41,13 +41,12 @@ public class ProfileScreen extends LoginScreen {
         TextView textView = (TextView) findViewById(R.id.userFirstName);
         TextView textView1 = (TextView) findViewById(R.id.userLastName);
         TextView textView2 = (TextView) findViewById(R.id.userEmail);
-        TextView textView3 = (TextView) findViewById(R.id.userMessage);
+
         RatingBar ratinguser = (RatingBar) findViewById(R.id.userRatingAve);
 
         textView.setText(firstname);
         textView1.setText(lastname);
         textView2.setText(email);
-        textView3.setText(message);
         ratinguser.setRating(rating);
     }
     public void onClick(View arg0) {

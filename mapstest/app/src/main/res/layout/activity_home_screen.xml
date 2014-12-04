@@ -78,4 +78,14 @@
         android:layout_alignStart="@+id/viewIdleScreen"
         android:layout_marginBottom="10dp"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go to msg"
+        android:id="@+id/btnMessageScreen"
+        android:onClick="gotoMessage"
+        android:layout_alignTop="@+id/confirmscan1"
+        android:layout_alignRight="@+id/viesProfile"
+        android:layout_alignEnd="@+id/viesProfile" />
+
 </RelativeLayout>

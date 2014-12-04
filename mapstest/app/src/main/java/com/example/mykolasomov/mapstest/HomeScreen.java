@@ -165,4 +165,7 @@ public class HomeScreen extends LoginScreen {
             }
         }
     }
+    public void gotoMessage(View v){
+        startActivity(new Intent(HomeScreen.this, MessageScreen.class));
+    }
 }

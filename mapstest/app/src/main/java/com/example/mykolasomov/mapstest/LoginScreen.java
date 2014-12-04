@@ -42,6 +42,7 @@ public class LoginScreen extends Activity implements View.OnClickListener {
     public static String email;
     public static String message;
     public static int id;
+    public static String message_result;
     public static int rating;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,12 +152,15 @@ public class LoginScreen extends Activity implements View.OnClickListener {
 
                 JSONObject text_obj = new JSONObject(text);
                 String status = text_obj.getString("status");
+
                 firstname = text_obj.getString("0");
                 lastname = text_obj.getString("1");
                 email = text_obj.getString("2");
                 id = text_obj.getInt("3");
                 message = text_obj.getString("4");
                 rating = text_obj.getInt("5");
+                message_result = text_obj.getString("6");
+
                 Log.d("ID",Integer.toString(id));
                 //transition to home screen if credentials are valid
                 if (status.equals("200")) {

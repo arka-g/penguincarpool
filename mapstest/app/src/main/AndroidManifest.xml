@@ -3,11 +3,12 @@
     package="com.example.mykolasomov.mapstest" >
 
     <uses-feature android:name="android.hardware.camera" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-sdk android:minSdkVersion="13"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-sdk android:minSdkVersion="13" />
 
     <application
-
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -15,10 +16,13 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" >
-            <!-- <intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter> -->
+            </intent-filter>
+            -->
         </activity>
         <activity
             android:name=".LoginScreen"
@@ -27,25 +31,28 @@
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
             <!-- configChanges and screenOrientation restrict application to "portrait" mode for THIS activity. Copy for all activities. -->
-            <!-- <intent-filter>
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter> -->
+            </intent-filter>
+            -->
         </activity>
         <activity
             android:name=".HomeScreen"
             android:configChanges="keyboardHidden|screenSize"
             android:screenOrientation="portrait" >
 
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".ProfileScreen"
@@ -69,14 +76,13 @@
         </activity>
         <activity
             android:name=".IdleScreen"
-            android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|screenSize" >
+            android:configChanges="keyboardHidden|screenSize"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".RateScreen"
-            android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|screenSize" >
-
+            android:configChanges="keyboardHidden|screenSize"
+            android:screenOrientation="portrait" >
         </activity>
         <activity android:name=".JoinScreen" />
 
@@ -87,7 +93,10 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyAtr03GYE0O6fpBMaRc3UszSNXR-JuNUvw" />
 
-
+        <activity
+            android:name=".MessageScreen"
+            android:label="@string/title_activity_message_screen" >
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

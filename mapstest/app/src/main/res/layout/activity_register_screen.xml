@@ -1,0 +1,122 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.mykolasomov.mapstest.RegisterScreen"
+    android:background="@drawable/reg_screen_bg">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/view_profile_header"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/regWelcomeTitle2"/>
+
+    <TextView
+        android:text="Please provide the following basic information so that we may add you to our databse."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:id="@+id/regWelcome"
+        android:layout_below="@+id/regWelcomeTitle2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/regFirstName"
+        android:layout_marginTop="30dp"
+        android:hint="first name"
+        android:layout_below="@+id/regWelcome"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/regLastName"
+        android:hint="last name"
+        android:layout_below="@+id/regFirstName"
+        android:layout_alignLeft="@+id/regFirstName"
+        android:layout_alignStart="@+id/regFirstName" />
+
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/regEmail"
+        android:hint="example@email.com"
+        android:layout_marginTop="34dp"
+        android:layout_below="@+id/regLastName"
+        android:layout_alignLeft="@+id/regLastName"
+        android:layout_alignStart="@+id/regLastName" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/regPassword"
+        android:hint="password"
+        android:layout_below="@+id/regEmail"
+        android:layout_alignLeft="@+id/regEmail"
+        android:layout_alignStart="@+id/regEmail" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/regPasswordConf"
+        android:hint="confirm password"
+        android:layout_below="@+id/regPassword"
+        android:layout_alignLeft="@+id/regPassword"
+        android:layout_alignStart="@+id/regPassword" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit Information"
+        android:id="@+id/regSubmitInfo"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="WELCOME"
+        android:id="@+id/regWelcomeTitleEdit"
+        android:textStyle="italic"
+        android:autoLink="none"
+        android:textSize="30dp"
+        android:paddingTop="20dp"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Penguin Carpool"
+        android:id="@+id/regWelcomeTitle2"
+        android:textStyle="bold|italic"
+        android:autoLink="none"
+        android:textSize="40dp"
+        android:paddingBottom="20dp"
+        android:gravity="center"
+        android:layout_below="@+id/regWelcomeTitleEdit"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

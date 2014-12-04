@@ -1,0 +1,80 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.mykolasomov.mapstest.ScheduleScreen"
+    android:background="@drawable/reg_screen_bg">
+
+    <TextView
+        android:text="Please fill out the following form in order to schedule a taxi in advance within the next two weeks (14 days)."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="40dp"
+        android:id="@+id/schedWelcome" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/schedDate"
+        android:hint="date [YYYY-MM-DD]"
+        android:layout_below="@+id/schedWelcome"
+        android:layout_alignLeft="@+id/schedTime"
+        android:layout_alignStart="@+id/schedTime" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:ems="10"
+        android:id="@+id/schedTime"
+        android:hint="time [HH:MM:SS]"
+        android:layout_below="@+id/schedDate"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:minLines="15"
+        android:maxLines="15"
+        android:textSize="12sp"
+        android:editable="false"
+        android:id="@+id/my_edit"
+        android:layout_above="@+id/schedSubmitInfo"
+        android:layout_below="@+id/schedDropoff"
+        android:layout_margin="20dp"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPostalAddress"
+        android:ems="10"
+        android:id="@+id/schedPickup"
+        android:hint="pickup location"
+        android:layout_below="@+id/schedTime"
+        android:layout_alignLeft="@+id/schedTime"
+        android:layout_alignStart="@+id/schedTime"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPostalAddress"
+        android:ems="10"
+        android:id="@+id/schedDropoff"
+        android:hint="dropoff location"
+        android:layout_below="@+id/schedPickup"
+        android:layout_alignLeft="@+id/schedPickup"
+        android:layout_alignStart="@+id/schedPickup" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit Information"
+        android:id="@+id/schedSubmitInfo"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"/>
+
+</RelativeLayout>

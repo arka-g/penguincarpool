@@ -1,0 +1,98 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.mykolasomov.mapstest.HomeScreen"
+    android:id="@+id/layoutHomeScreen"
+    android:background="@drawable/login_screen_bg">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView1"
+        android:src="@drawable/penguin_carpool_logo"
+        android:layout_above="@+id/idleViewEstimate"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="-40dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:id="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="-30dp"
+        android:layout_marginBottom="-30dp"
+        android:background="@drawable/home_screen_square"
+        android:layout_alignBottom="@+id/orderTaxi"
+        android:layout_alignTop="@+id/scheduleTaxi"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Schedule Taxi"
+        android:id="@+id/scheduleTaxi"
+        android:layout_marginTop="225dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="launchScheduleScreen" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order Taxi"
+        android:id="@+id/orderTaxi"
+        android:layout_below="@+id/scheduleTaxi"
+        android:layout_marginTop="26dp"
+        android:layout_alignRight="@+id/scheduleTaxi"
+        android:layout_alignEnd="@+id/scheduleTaxi"
+        android:layout_alignLeft="@+id/scheduleTaxi"
+        android:layout_alignStart="@+id/scheduleTaxi"
+        android:onClick="launchRequestScreen" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="View Profile"
+        android:id="@+id/viesProfile"
+        android:onClick="launchViewProfile"
+        android:layout_margin="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="Get In Taxi"
+        android:id="@+id/viewIdleScreen"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="30dp"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="Confirm Taxi Scan"
+        android:id="@+id/confirmscan1"
+        android:layout_above="@+id/viewIdleScreen"
+        android:layout_alignLeft="@+id/viewIdleScreen"
+        android:layout_alignStart="@+id/viewIdleScreen" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="View Messages"
+        android:id="@+id/btnMessageScreen"
+        android:onClick="gotoMessage"
+        android:layout_alignTop="@+id/confirmscan1"
+        android:layout_alignLeft="@+id/viesProfile"
+        android:layout_alignStart="@+id/viesProfile" />
+
+</RelativeLayout>

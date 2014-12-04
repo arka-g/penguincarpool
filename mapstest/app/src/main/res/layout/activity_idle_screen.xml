@@ -1,0 +1,99 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context="com.example.mykolasomov.mapstest.IdleScreen"
+    android:background="@drawable/reg_screen_bg">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView1"
+        android:src="@drawable/penguin_carpool_logo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="-50dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Launch map to generate estimate"
+        android:id="@+id/idleViewEstimate"
+        android:textStyle="bold|italic"
+        android:autoLink="none"
+        android:textSize="20dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="View Route and Get Estimate"
+        android:id="@+id/idleRoute"
+        android:onClick="launchMapScreen"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="20dp"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Leave Taxi"
+        android:id="@+id/idleScan"
+        android:layout_margin="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=""
+        android:id="@+id/idleDestination"
+        android:textStyle="italic"
+        android:layout_below="@+id/chronometer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm Leave"
+        android:id="@+id/confirmscan"
+        android:layout_above="@+id/idleScan"
+        android:layout_alignRight="@+id/idleScan"
+        android:layout_alignEnd="@+id/idleScan"
+        android:layout_alignLeft="@+id/idleScan"
+        android:layout_alignStart="@+id/idleScan" />
+
+    <Chronometer
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="15:32"
+        android:id="@+id/chronometer"
+        android:textSize="50dp"
+        android:layout_below="@+id/idleViewEstimate"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="View Messages"
+        android:id="@+id/btnMessageScreenIdle"
+        android:onClick="gotoMessage"
+        android:layout_alignBaseline="@+id/confirmscan"
+        android:layout_alignBottom="@+id/confirmscan"
+        android:layout_alignLeft="@+id/idleRoute"
+        android:layout_alignStart="@+id/idleRoute" />
+
+</RelativeLayout>

@@ -26,7 +26,7 @@ import java.util.List;
 
 
 public class MessageScreen extends LoginScreen {
-    public String nametopass;
+    public String nametopass = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,10 +34,17 @@ public class MessageScreen extends LoginScreen {
         TextView textView = (TextView) findViewById(R.id.userMessage);
         textView.setText(LoginScreen.message);
         String wtftest = LoginScreen.message;
-        TextView textViewrand = (TextView) findViewById(R.id.totald);
-        textViewrand.setText(Float.toString(IdleScreen.totalD) + " km");
-        String[] split = wtftest.split(" ");
-        nametopass = split[1];
+        if (wtftest.equals("")){
+            wtftest = "user test";
+        }
+        else {
+        }
+
+            TextView textViewrand = (TextView) findViewById(R.id.totald);
+            textViewrand.setText(Float.toString(IdleScreen.totalD) + " km");
+            String[] split = wtftest.split(" ");
+            nametopass = split[1];
+
         Log.d("name",split[1]);
         TextView textView1 = (TextView) findViewById(R.id.result_msg);
         textView1.setText(LoginScreen.message_result);

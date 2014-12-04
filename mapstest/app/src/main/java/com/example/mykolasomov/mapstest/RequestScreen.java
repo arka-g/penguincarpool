@@ -61,7 +61,7 @@ public class RequestScreen extends LoginScreen implements View.OnClickListener {
 
             //HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-            HttpPost httpPost = new HttpPost("http://172.17.20.216/penguin-carpool/public/neworder");
+            HttpPost httpPost = new HttpPost("http://172.17.154.216/penguin-carpool/public/neworder");
 //for phone:
 //            HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/neworder");
 
@@ -119,7 +119,7 @@ public class RequestScreen extends LoginScreen implements View.OnClickListener {
 
             //HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-            HttpPost httpPost = new HttpPost("http://172.17.20.216/penguin-carpool/public/neworder");
+            HttpPost httpPost = new HttpPost("http://172.17.154.216/penguin-carpool/public/neworder");
             //for phone:
 //            HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/neworder");
             //Post Data

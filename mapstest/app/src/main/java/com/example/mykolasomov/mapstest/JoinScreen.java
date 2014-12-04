@@ -78,7 +78,7 @@ public class JoinScreen extends com.example.mykolasomov.mapstest.LoginScreen {
         protected String doInBackground(Void... params) {
             HttpContext localContext = new BasicHttpContext();
             //get available taxis
-            HttpGet httpGet = new HttpGet("http://172.17.20.216/penguin-carpool/public/carpool");
+            HttpGet httpGet = new HttpGet("http://172.17.154.216/penguin-carpool/public/carpool");
             String text = null;
             try {
                 HttpResponse response2 = httpClient.execute(httpGet, localContext);
@@ -135,7 +135,7 @@ public class JoinScreen extends com.example.mykolasomov.mapstest.LoginScreen {
                     StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
                     StrictMode.setThreadPolicy(policy);
-                    HttpPost httpPost = new HttpPost("http://172.17.20.216/penguin-carpool/public/messagePost");
+                    HttpPost httpPost = new HttpPost("http://172.17.154.216/penguin-carpool/public/messagePost");
                     //Post Data
                     List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
                     nameValuePair.add(new BasicNameValuePair("Type_Message", textview.getText().toString()));

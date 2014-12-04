@@ -73,7 +73,7 @@ public class ScheduleScreen extends LoginScreen {
             String dropoff = dropoff_loc.getText().toString();
 
 
-            HttpPost httpPost = new HttpPost("http://172.17.20.216/penguin-carpool/public/saveschedule");
+            HttpPost httpPost = new HttpPost("http://172.17.154.2166/penguin-carpool/public/saveschedule");
             //HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/login");
             //Post Data
             List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(5);
@@ -110,7 +110,7 @@ public class ScheduleScreen extends LoginScreen {
 
             HttpContext localContext = new BasicHttpContext();
             //connection to localhost?Return error: http://172.17.60.37:80/yo
-            HttpGet httpGet = new HttpGet("http://172.17.20.216/penguin-carpool/public/getschedule");
+            HttpGet httpGet = new HttpGet("http://172.17.154.216/penguin-carpool/public/getschedule");
             String text = null;
             try {
                 HttpResponse response1 = httpClient.execute(httpGet, localContext);

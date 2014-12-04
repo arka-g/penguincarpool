@@ -57,6 +57,7 @@ public class RegisterScreen extends Activity implements View.OnClickListener {
 
 
     private class RegisterIO extends AsyncTask<Void, Void, String> {
+
         @Override
 
         protected String doInBackground(Void... params) {
@@ -74,17 +75,17 @@ public class RegisterScreen extends Activity implements View.OnClickListener {
             //String str4 = username.getText().toString();
             String str5 = password.getText().toString();
 
-            str1 = Base64.encodeToString(str1.getBytes(), Base64.DEFAULT);
-            Log.e("YOLO", str1);
-            str1 = new String(Base64.decode(str1, Base64.DEFAULT));
-            Log.e("YOLO", str1);
+//            str1 = Base64.encodeToString(str1.getBytes(), Base64.DEFAULT);
+//            Log.e("YOLO", str1);
+//            str1 = new String(Base64.decode(str1, Base64.DEFAULT));
+//            Log.e("YOLO", str1);
 
 
             //byte[] encodedBytes = Base64.encodeBase64(str1.getBytes());
 
             HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-           HttpPost httpPost = new HttpPost("http://172.17.20.216/penguin-carpool/public/save");
+           HttpPost httpPost = new HttpPost("http://172.17.154.216/penguin-carpool/public/save");
 //            HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/save");
             //Post Data
             List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(4);
@@ -106,7 +107,7 @@ public class RegisterScreen extends Activity implements View.OnClickListener {
             //making POST request.
             try {
                 HttpResponse response = httpClient.execute(httpPost);
-                // write response to log
+                // write response to logu
                 Log.d("Http Post Response:", response.toString());
             } catch (ClientProtocolException e) {
                 // Log exception

@@ -82,7 +82,7 @@ public class MessageScreen extends LoginScreen {
 
             //HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-            HttpPost httpPost = new HttpPost("http://172.17.20.216/penguin-carpool/public/msgaccept");
+            HttpPost httpPost = new HttpPost("http://172.17.154.216/penguin-carpool/public/msgaccept");
 //for phone:
 //            HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/neworder");
 
@@ -132,7 +132,7 @@ public class MessageScreen extends LoginScreen {
 
         protected String doInBackground(Void... params) {
 
-            HttpPost httpPost = new HttpPost("http://172.17.20.216/penguin-carpool/public/msgdecline");
+            HttpPost httpPost = new HttpPost("http://172.17.154.216/penguin-carpool/public/msgdecline");
 //for phone:
 //            HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/neworder");
 

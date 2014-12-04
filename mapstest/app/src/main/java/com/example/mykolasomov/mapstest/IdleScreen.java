@@ -112,7 +112,7 @@ public class IdleScreen extends com.example.mykolasomov.mapstest.LoginScreen {
 
            // HttpClient httpClient = new DefaultHttpClient();
             // replace with your url
-            HttpPost httpPost = new HttpPost("http://172.17.20.216/penguin-carpool/public/updateState");
+            HttpPost httpPost = new HttpPost("http://172.17.154.216/penguin-carpool/public/updateState");
            // HttpPost httpPost = new HttpPost("http://172.17.31.169/penguin-carpool/public/updateState");
             //Post Data
             List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(4);

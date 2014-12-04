@@ -1,4 +1,4 @@
-penguincarpool
+Penguin Carpool
 ==============
 
 ##SE 3A04 Final Project (McMaster University Software Architecture Course) 
